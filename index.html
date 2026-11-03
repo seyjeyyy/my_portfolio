@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clarenz John T. Ibaya — Full-Stack Mobile & Web Developer</title>
+<style>
+:root{--red:#e10600;--bg:#0a0a0c;--panel:#141418;--line:#2a2a33;--text:#f3f3f5;--muted:#b4b4c0;--pu:#b138dd;--gr:#00d26a;--ye:#ffd400;--cb:rgba(255,255,255,.025);
+--f:"Arial Narrow","Roboto Condensed","Helvetica Neue",Impact,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#d4d1ca;--panel:#e3e0d9;--line:#b5b1a7;--text:#1b1b1f;--muted:#4a4a52;--ye:#a67c00;--pu:#8a24b0;--gr:#058a4a;--cb:rgba(0,0,0,.04)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden;
+background-color:var(--bg);background-image:repeating-linear-gradient(45deg,var(--cb) 0 4px,transparent 4px 8px),repeating-linear-gradient(-45deg,var(--cb) 0 4px,transparent 4px 8px)}
+a{color:inherit;text-decoration:none}
+.w{max-width:1120px;margin:0 auto;padding:0 22px}section.w{padding:84px 22px 30px}
+.f{font-family:var(--f);text-transform:uppercase;font-style:italic;font-weight:800;letter-spacing:.01em}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:60}
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px}.logo i{background:var(--red);color:#fff;padding:0 9px;transform:skewX(-12deg);display:inline-block}
+nav{display:flex;gap:4px}nav a{padding:6px 13px;font-size:16px;color:var(--muted);transform:skewX(-12deg);transition:.2s;border-bottom:3px solid transparent}
+nav a:hover{color:var(--text)}nav a.on{color:var(--text);border-color:var(--red);background:var(--panel)}
+.ib{background:var(--panel);border:1px solid var(--line);color:var(--text);height:38px;padding:0 15px;cursor:pointer;font:inherit;font-size:15px;transform:skewX(-12deg);transition:.2s}.ib:hover{border-color:var(--red)}
+.btn{display:inline-block;padding:12px 24px;font-size:16px;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text);transform:skewX(-12deg);transition:.2s}
+.btn.p{background:var(--red);border-color:var(--red);color:#fff}.btn:hover{transform:skewX(-12deg) translateY(-2px);box-shadow:0 8px 22px rgba(225,6,0,.3)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;min-height:86vh;padding-top:30px}
+.lights{display:flex;gap:10px;margin-bottom:22px;background:#000;padding:12px 16px;width:fit-content;border-radius:8px;border:1px solid var(--line);cursor:pointer}
+.lights i{width:22px;height:22px;border-radius:50%;background:#2a0a0a;transition:.15s}.lights i.on{background:var(--red);box-shadow:0 0 14px var(--red)}.lights i.g{background:#00d26a;box-shadow:0 0 16px #00d26a}
+
+.lt{font:13px ui-monospace,monospace;color:var(--muted);letter-spacing:.14em;margin-bottom:6px}
+h1{font-size:clamp(46px,9vw,104px);line-height:.92;margin:0 0 18px}h1 em{color:var(--red);font-style:italic}
+.lead{color:var(--muted);max-width:540px;font-size:18px}.row{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 18px}
+.tw{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden}
+.tw::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red)}
+.gauge{width:100%;max-width:300px;display:block;margin:0 auto}.gauge text{fill:var(--text)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;text-align:center}
+.stat b{display:block;font-size:24px;color:var(--ye)}.stat span{font:12.5px ui-monospace,monospace;color:var(--muted)}
+.tel{display:flex;justify-content:space-between;font:13px ui-monospace,monospace;color:var(--muted);margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.flag{height:22px;margin:20px 0;background:conic-gradient(var(--text) 25%,transparent 0 50%,var(--text) 0 75%,transparent 0) 0 0/22px 22px;opacity:.9;-webkit-mask:linear-gradient(90deg,#000,transparent);mask:linear-gradient(90deg,#000,transparent)}
+.eye{font:13px ui-monospace,monospace;color:var(--red);letter-spacing:.18em}
+h2{font-size:clamp(34px,6vw,60px);line-height:.95;margin:6px 0 26px}
+.tabs{display:flex;gap:8px;margin-bottom:16px}.tabs .ib.on{background:var(--red);border-color:var(--red);color:#fff}
+.gr{border:1px solid var(--line);background:var(--panel);margin-bottom:8px;overflow:hidden;transition:.25s}
+.gr:hover{border-color:var(--red);transform:translateX(4px)}
+.gh{all:unset;box-sizing:border-box;display:grid;grid-template-columns:50px 6px 1.3fr 1.6fr 30px;gap:14px;align-items:center;width:100%;padding:14px 16px;cursor:pointer}
+.pos{font-size:26px;color:var(--text);opacity:.7}.cbar{height:34px;border-radius:2px}
+.gn{font-size:24px;line-height:1}.gn small{display:block;font:13px ui-monospace,monospace;color:var(--muted);text-transform:none;font-style:normal;margin-top:4px;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{font:13px ui-monospace,monospace;padding:4px 10px;border:1px solid var(--line);color:var(--muted)}
+.fl{background:#8a24b0;color:#fff;font:11px ui-monospace,monospace;padding:2px 6px;margin-left:8px;vertical-align:middle;font-style:normal}
+.gb{max-height:0;overflow:hidden;transition:max-height .4s;padding:0 16px 0 86px;color:var(--text);opacity:.88}
+.gr.open .gb{max-height:520px;padding-bottom:18px}.gr.open{border-color:var(--red)}.gr.open .ar{transform:rotate(90deg)}.ar{transition:.3s;color:var(--red)}
+.gb ul{margin:8px 0 14px;padding-left:18px}
+.laps{position:relative;padding-left:34px}.laps::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--line)}
+.laps u{position:absolute;left:9px;top:6px;width:3px;background:var(--red);height:0;transition:height .2s;text-decoration:none}
+.lap{position:relative;margin-bottom:22px}.lap::before{content:"";position:absolute;left:-32px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--red)}
+.lap b{font-size:22px}.lap small{font:13px ui-monospace,monospace;color:var(--pu);letter-spacing:.1em}.lap p{margin:4px 0 0;color:var(--muted);max-width:620px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.tyre{margin-bottom:18px}.tyre b{display:flex;align-items:center;gap:10px;font-size:18px;margin-bottom:8px}.tyre b i{width:16px;height:16px;border-radius:50%;border:4px solid var(--c);background:transparent}
+.tyre .chip{transition:.2s;cursor:default}.tyre .chip:hover{color:var(--text);border-color:var(--c);transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.radio{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--red);padding:34px;text-align:center}
+.wave{display:flex;gap:3px;justify-content:center;align-items:center;height:40px;margin:14px 0}.wave i{width:4px;background:var(--red);border-radius:2px;animation:wv 1s ease-in-out infinite}
+@keyframes wv{50%{height:34px}}
+.view{display:none;min-height:70vh}.view.act{display:block;animation:vin .45s}@keyframes vin{from{opacity:0;transform:translateX(-26px)}}.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:26px}
+.fc{display:block;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--red);padding:14px 16px}.fc small{display:block;font:12.5px ui-monospace,monospace;color:var(--muted);letter-spacing:.08em}.fc b{font-size:20px;display:block;line-height:1.25;margin-top:4px}
+.mq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:26px;padding:10px 0;white-space:nowrap}.mq div{display:inline-block;animation:mq 34s linear infinite;font-size:20px;color:var(--muted)}@keyframes mq{to{transform:translateX(-50%)}}.mq span{margin:0 18px}.mq span:nth-child(3n){color:var(--red)}
+.pl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}.pl a{display:block;transition:.2s}.pl a:hover{transform:translateY(-4px)}.pl p{margin:6px 0 0;color:var(--muted);font-size:15px}
+ul.ck{list-style:none;padding:0;margin:10px 0 0}ul.ck li{padding:6px 0 6px 26px;position:relative}ul.ck li::before{content:"▶";position:absolute;left:0;color:var(--red);font-size:12px;top:11px}
+.sub{font-size:28px;margin:38px 0 14px}.intro{color:var(--muted);max-width:680px;font-size:18px;margin:-8px 0 22px}
+.nx{margin-top:36px;display:flex;justify-content:flex-end}
+footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0;color:var(--muted);font:13px ui-monospace,monospace;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ov{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:20px}.ov.show{display:flex}
+.modal{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--red);max-width:560px;width:100%;padding:26px;max-height:88vh;overflow:auto}
+.field{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--text);padding:11px 13px;font:inherit;margin-bottom:12px}.field:focus{outline:none;border-color:var(--red)}
+@media(max-width:860px){.hero,.two{grid-template-columns:1fr}nav{display:none}.hero{min-height:0}.gh{grid-template-columns:36px 5px 1fr 24px}.gh .chips{display:none}.gb{padding-left:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<header><div class="w bar">
+<a class="logo f" href="#home"><i>CJ</i>Ibaya</a>
+<nav class="f" id="nav"><a href="#home" class="on">Home</a><a href="#grid">Projects</a><a href="#laps">Race Report</a><a href="#tyres">Telemetry</a><a href="#cv">CV</a><a href="#radio">Team Radio</a></nav>
+<button class="ib" id="theme">☾ Day</button>
+</div></header>
+
+<section id="home" class="w view act" style="padding-top:30px"><div class="hero">
+<div><div class="lights" id="lights" title="Click to replay"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="lt" id="lt">FORMATION LAP…</div>
+<h1 class="f">Clarenz<br><em>Ibaya</em></h1>
+<p class="lead">Full-stack mobile &amp; web developer and BSIT student. I build offline-first apps, relational databases and role-based systems with Flutter, Next.js and Supabase, and I’m looking for an OJT seat on the grid.</p>
+<div class="row f"><a class="btn p" href="#grid">See the grid →</a><a class="btn" href="#cv">Get my CV</a><a class="btn" href="#radio">Team radio</a></div>
+<div style="color:var(--muted);font-size:13px">📍 San Rafael, Bulacan · <a href="https://github.com/seyjeyyy" target="_blank" rel="noopener" style="color:var(--red)">GitHub ↗</a></div></div>
+<div class="tw" id="tw"><div class="eye">LIVE TELEMETRY</div>
+<svg class="gauge" viewBox="0 0 220 135"><path d="M20 110 A90 90 0 0 1 200 110" fill="none" stroke="var(--line)" stroke-width="14" pathLength="100"/><path id="arc" d="M20 110 A90 90 0 0 1 200 110" fill="none" stroke="var(--red)" stroke-width="14" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" stroke-linecap="butt" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/><line id="needle" x1="110" y1="110" x2="110" y2="38" stroke="var(--ye)" stroke-width="3" style="transform-origin:110px 110px;transform:rotate(-90deg);transition:transform 1.6s cubic-bezier(.2,.8,.2,1)"/><circle cx="110" cy="110" r="7" fill="var(--ye)"/><text x="110" y="132" text-anchor="middle" font-size="14" font-style="italic" font-weight="800" font-family="Arial Narrow,Impact,sans-serif">FULL-STACK</text></svg>
+<div class="stat f"><div><b>5</b><span>PROJECTS</span></div><div><b>3</b><span>LIVE SITES</span></div><div><b>2</b><span>PLATFORMS</span></div></div>
+<div class="tel"><span id="sess">SESSION 00:00</span><span id="clock"></span></div></div>
+</div><div class="flag"></div>
+<div class="facts f"><div class="fc"><small>SCHOOL</small><b>National University Baliwag</b></div><div class="fc"><small>PROGRAM</small><b>BS Information Technology</b></div><div class="fc"><small>SPECIALIZATION</small><b>Mobile &amp; Web Application Systems</b></div><div class="fc"><small>LOOKING FOR</small><b>OJT in mobile / web dev</b></div></div>
+<div class="mq f"><div id="mqi"></div></div>
+<h3 class="f sub">About <span style="color:var(--red)">me</span></h3>
+<p class="intro" style="margin-top:0;color:var(--text)">I’m a BS Information Technology student who builds mobile and web applications with offline synchronization, relational databases, role-based access and cloud deployment. My work spans Flutter and Next.js front ends, Supabase and MySQL back ends, and the system design behind them: architecture, ERDs, data flow diagrams and ISO/IEC 25010 evaluation.</p>
+<h3 class="f sub">Pit <span style="color:var(--red)">lane</span></h3>
+<div class="pl f"><a class="tw" href="#grid"><b style="font-size:22px">Projects →</b><p style="text-transform:none;font-style:normal;font-weight:400">Five builds, three live sites.</p></a><a class="tw" href="#laps"><b style="font-size:22px">Race Report →</b><p style="text-transform:none;font-style:normal;font-weight:400">Education, journey and activities.</p></a><a class="tw" href="#tyres"><b style="font-size:22px">Telemetry →</b><p style="text-transform:none;font-style:normal;font-weight:400">Skills, coursework and strengths.</p></a><a class="tw" href="#cv"><b style="font-size:22px">CV →</b><p style="text-transform:none;font-style:normal;font-weight:400">View or download both versions.</p></a></div></section>
+
+<section id="grid" class="w view"><div class="eye">STARTING GRID</div><h2 class="f">Selected <span style="color:var(--red)">projects</span></h2>
+<p class="intro">Academic and community builds across Flutter, Next.js, Supabase, PHP and MySQL. Click a row to open its details.</p>
+<div class="tabs f" id="tabs"><button class="ib on" data-f="all">All</button><button class="ib" data-f="mobile">Mobile</button><button class="ib" data-f="web">Web</button></div>
+<div id="gl"></div>
+<h3 class="f sub">By the <span style="color:var(--red)">numbers</span></h3>
+<div class="facts f"><div class="fc"><small>PROJECTS</small><b>5 built</b></div><div class="fc"><small>LIVE DEPLOYMENTS</small><b>3 on Vercel</b></div><div class="fc"><small>MOBILE APPS</small><b>2 in Flutter</b></div><div class="fc"><small>LEAD ROLE</small><b>Tinig Turo</b></div></div></section>
+
+<section id="laps" class="w view"><div class="eye">RACE REPORT</div><h2 class="f">Lap by lap</h2>
+<div class="laps" id="lp"><u id="lu"></u>
+<div class="lap"><small>LAP 1 · FORMATION</small><br><b class="f">Started my IT journey</b><p>Studying Information Technology at National University Baliwag, specializing in Mobile and Web Application Systems.</p></div>
+<div class="lap"><small>LAP 2 · SECTOR 1</small><br><b class="f">From fundamentals to apps</b><p>Coursework in mobile and web development, database management, networking and virtualization became real apps like GrammarSwitch and SafeRoute.</p></div>
+<div class="lap"><small>LAP 3 · FASTEST LAP</small><br><b class="f">Leading a team build</b><p>Lead Developer on Tinig Turo and full-stack on FairPlay: architecture, ERDs, offline sync, and deployment through GitHub and Vercel.</p></div>
+
+<div class="lap"><small>LAP 4 · IN PROGRESS</small><br><b class="f">Community &amp; growth</b><p>Attended AWS Student Community Day North and volunteered in community and facility building initiatives.</p></div></div>
+<h3 class="f sub">Education &amp; <span style="color:var(--red)">activities</span></h3>
+<div class="grid"><div class="tw"><div class="eye">EDUCATION</div><h3 class="f" style="font-size:26px;margin:6px 0">National University Baliwag</h3><p style="margin:0;color:var(--muted)">Bachelor of Science in Information Technology<br>Specialization in Mobile and Web Application Systems</p></div>
+<div class="tw"><div class="eye">COMMUNITY</div><h3 class="f" style="font-size:26px;margin:6px 0">Extracurricular</h3><ul class="ck"><li>Attendee &amp; participant · AWS Student Community Day North, National University Baliwag</li><li>Volunteer participant · Community &amp; facility building initiatives</li></ul></div></div></section>
+
+<section id="tyres" class="w view"><div class="eye">TELEMETRY</div><h2 class="f">Tyre <span style="color:var(--red)">compounds</span></h2>
+<div class="two"><div>
+<div class="tyre" style="--c:var(--red)"><b class="f"><i></i>Soft · Languages &amp; frameworks</b><div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">HTML5</span><span class="chip">CSS3</span></div></div>
+<div class="tyre" style="--c:var(--ye)"><b class="f"><i></i>Medium · Database &amp; backend</b><div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">REST APIs</span><span class="chip">RLS</span><span class="chip">Anonymous Auth</span></div></div></div><div>
+<div class="tyre" style="--c:var(--text)"><b class="f"><i></i>Hard · Tools &amp; deployment</b><div class="chips"><span class="chip">Git/GitHub</span><span class="chip">Vercel</span><span class="chip">XAMPP</span><span class="chip">Hyper-V</span><span class="chip">Cisco Packet Tracer</span></div></div>
+<div class="tyre" style="--c:var(--gr)"><b class="f"><i></i>Intermediate · System design</b><div class="chips"><span class="chip">Offline-first</span><span class="chip">Local caching</span><span class="chip">Sync queues</span><span class="chip">ERDs</span><span class="chip">DFDs</span><span class="chip">ISO/IEC 25010</span></div></div></div></div>
+<h3 class="f sub">What I <span style="color:var(--red)">build</span></h3>
+<div class="grid"><div class="tw"><h3 class="f" style="font-size:24px;margin:0 0 6px">Offline-first apps</h3><p style="margin:0;color:var(--muted)">Local session storage, caching and retry queues that sync to Supabase when the connection returns.</p></div>
+<div class="tw"><h3 class="f" style="font-size:24px;margin:0 0 6px">Role-based systems</h3><p style="margin:0;color:var(--muted)">PostgreSQL row-level security, anonymous auth and teacher access controls for student data.</p></div>
+<div class="tw"><h3 class="f" style="font-size:24px;margin:0 0 6px">Relational design</h3><p style="margin:0;color:var(--muted)">ERDs, schemas and data flow diagrams in MySQL and Supabase, from architecture to endpoints.</p></div>
+<div class="tw"><h3 class="f" style="font-size:24px;margin:0 0 6px">Ship &amp; evaluate</h3><p style="margin:0;color:var(--muted)">GitHub to Vercel deployment and ISO/IEC 25010-based system evaluation.</p></div></div>
+<h3 class="f sub">Related <span style="color:var(--red)">coursework</span></h3>
+<div class="chips"><span class="chip">Mobile development</span><span class="chip">Web development</span><span class="chip">Database management</span><span class="chip">Networking</span><span class="chip">Virtualization</span></div></section>
+
+<section id="cv" class="w view"><div class="eye">PIT STOP · DOCUMENTS</div><h2 class="f">Grab my <span style="color:var(--red)">CV</span></h2>
+<p class="intro">BS Information Technology student specializing in Mobile and Web Application Systems, with project experience in Flutter, React, Next.js, PHP and Supabase.</p>
+<div class="grid">
+<div class="tw"><div class="eye">PDF · WITH PHOTO</div><h3 class="f" style="font-size:28px;margin:6px 0">Full CV</h3><p style="color:var(--muted);margin:0 0 14px">Complete CV with photo, projects, skills, education and activities.</p><div class="row f" style="margin:0"><button class="btn p" data-cv="assets/Clarenz-Ibaya-CV-with-Photo.pdf">View</button><a class="btn" href="assets/Clarenz-Ibaya-CV-with-Photo.pdf" download>Download ↓</a></div></div>
+<div class="tw"><div class="eye">PDF · OJT VERSION</div><h3 class="f" style="font-size:28px;margin:6px 0">CV for OJT</h3><p style="color:var(--muted);margin:0 0 14px">Photo-free version for on-the-job training applications.</p><div class="row f" style="margin:0"><button class="btn p" data-cv="assets/Clarenz-Ibaya-CV-OJT.pdf">View</button><a class="btn" href="assets/Clarenz-Ibaya-CV-OJT.pdf" download>Download ↓</a></div></div>
+</div>
+<h3 class="f sub">Highlights <span style="color:var(--red)">inside</span></h3>
+<div class="grid"><div class="tw"><div class="eye">PROJECTS</div><ul class="ck"><li>Tinig Turo · Lead Developer</li><li>FairPlay · Full-Stack Developer</li><li>SafeRoute · Software Developer</li><li>GrammarSwitch · Mobile Developer</li></ul></div>
+<div class="tw"><div class="eye">SKILLS</div><ul class="ck"><li>Flutter, Dart, React, Next.js, TypeScript, PHP</li><li>Supabase, PostgreSQL, MySQL, SQLite, REST APIs</li><li>Git/GitHub, Vercel, XAMPP, Hyper-V</li></ul></div>
+<div class="tw"><div class="eye">ALSO</div><ul class="ck"><li>BSIT · National University Baliwag</li><li>AWS Student Community Day North</li><li>Community &amp; facility building volunteer</li></ul></div></div></section>
+
+<section id="radio" class="w view"><div class="radio"><div class="eye">TEAM RADIO</div><h2 class="f" style="margin-bottom:0">“Box, box.<br>Let’s <span style="color:var(--red)">talk</span>.”</h2>
+<div class="wave" id="wave"></div>
+<p style="color:var(--muted);max-width:520px;margin:0 auto 20px">Looking for an on-the-job training opportunity in mobile or web development. Pick up the line:</p>
+<div class="row f" style="justify-content:center;margin:0 0 12px"><a class="btn p" href="mailto:ibayacj@gmail.com">✉ ibayacj@gmail.com</a><a class="btn" href="tel:+639763032417">☎ 0976 303 2417</a></div>
+<button class="ib" id="openc">Or send a message ↗</button></div>
+<h3 class="f sub">Contact <span style="color:var(--red)">details</span></h3>
+<div class="facts f" style="margin-top:0"><a class="fc" href="mailto:ibayacj@gmail.com"><small>EMAIL</small><b>ibayacj@gmail.com</b></a><a class="fc" href="tel:+639763032417"><small>PHONE</small><b>0976 303 2417</b></a><div class="fc"><small>BASED IN</small><b>San Rafael, Bulacan</b></div><a class="fc" href="https://github.com/seyjeyyy" target="_blank" rel="noopener"><small>GITHUB</small><b>seyjeyyy ↗</b></a></div>
+<h3 class="f sub">What I’m <span style="color:var(--red)">looking for</span></h3>
+<ul class="ck"><li>An on-the-job training placement in mobile or web development</li><li>Hands-on work with Flutter, Next.js, Supabase or PHP stacks</li><li>A team where I can keep building offline-first and role-based systems</li></ul></section>
+<div class="w"><footer><span>© Clarenz John T. Ibaya · ibayacj@gmail.com · 0976 303 2417</span><span>LIGHTS OUT AND AWAY WE GO</span></footer></div>
+
+<div class="ov" id="vov"><div class="modal" style="max-width:860px;height:88vh;display:flex;flex-direction:column;gap:12px"><iframe id="vf" title="CV preview" style="flex:1;width:100%;border:1px solid var(--line);background:#fff"></iframe><div class="row f" style="margin:0"><a class="btn p" id="vd" download>Download ↓</a><a class="btn" id="vo" target="_blank" rel="noopener">New tab ↗</a><button class="btn" data-close>Close</button></div></div></div>
+<div class="ov" id="cov"><div class="modal"><h3 class="f" style="margin-top:0;font-size:26px">Send a message</h3><input class="field" id="cn" placeholder="Your name"><input class="field" id="ce" placeholder="Your email"><textarea class="field" id="cm" rows="4" placeholder="Your message"></textarea><div class="row f" style="margin:0"><button class="btn p" id="send">Open in email app ↗</button><button class="btn" data-close>Close</button></div></div></div>
+
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
+var P=[
+{t:"Tinig Turo",r:"Lead Developer · Educational English LMS",k:"mobile",c:"#e10600",f:1,d:"A reading-fluency system with a Flutter mobile client for elementary students and a Next.js teacher portal.",h:["Offline session storage with retry queues for Supabase sync","PostgreSQL row-level security and teacher access controls","Gamified learning and student progress dashboards"],g:["Flutter","Next.js","Supabase"],u:"https://tinigturo-green.vercel.app/",ro:"Lead Developer",pl:"Mobile + web portal"},
+{t:"FairPlay",r:"Full-Stack Developer · Event Scoring & Tournaments",k:"web",c:"#00d2be",d:"Event scoring, tabulation, and tournament management for web and mobile.",h:["System architecture, ERDs, and relational schemas","MySQL/Supabase data layer","ISO/IEC 25010 evaluation instrument; GitHub → Vercel deployment"],g:["MySQL","Supabase","Vercel"],u:"https://fairplay-kappa.vercel.app/",ro:"Full-Stack Developer",pl:"Web & mobile"},
+{t:"PawsConnect",r:"Adopt · Shop · Rescue · Donate · Deliver",k:"web",c:"#ff8700",d:"A web platform for pet adoption, shopping, rescue, donations and delivery, built for the Bulacan community.",h:["Deployed on Vercel"],g:["Web","Vercel"],u:"https://pawsconnect-one.vercel.app/",pl:"Web"},
+{t:"SafeRoute",r:"Software Developer · Navigation & Risk Rerouting",k:"web",c:"#3671c6",d:"An MVC-based navigation system for risk detection and safety rerouting.",h:["Modeled system workflows and data flow diagrams","Backend routing endpoints"],g:["PHP","MVC"],ro:"Software Developer",pl:"Web (MVC)"},
+{t:"GrammarSwitch",r:"Mobile Developer · Language Learning App",k:"mobile",c:"#b138dd",d:"Interactive grammar and parts-of-speech learning modules for an educational mobile app.",h:["Interactive learning modules"],g:["Flutter","Dart"],ro:"Mobile Developer",pl:"Mobile"}];
+function grid(f){var n=0;$("#gl").innerHTML=P.map(function(p){if(f!=="all"&&p.k!==f)return"";n++;return '<div class="gr"><button class="gh"><span class="pos f">P'+n+'</span><span class="cbar" style="background:'+p.c+'"></span><span class="gn f">'+p.t+(p.f?'<em class="fl">FASTEST LAP</em>':'')+'<small>'+p.r+'</small></span><span class="chips">'+p.g.map(function(x){return'<span class="chip">'+x+'</span>'}).join("")+'</span><span class="ar">▶</span></button><div class="gb"><p>'+p.d+'</p><div class="facts f" style="margin:0 0 12px"><div class="fc"><small>PLATFORM</small><b>'+p.pl+'</b></div>'+(p.ro?'<div class="fc"><small>MY ROLE</small><b>'+p.ro+'</b></div>':"")+'<div class="fc"><small>STATUS</small><b>'+(p.u?"Live on Vercel":"Academic project")+'</b></div></div><ul>'+p.h.map(function(x){return"<li>"+x+"</li>"}).join("")+'</ul>'+(p.u?'<a class="btn p f" href="'+p.u+'" target="_blank" rel="noopener">Visit website ↗</a>':'')+'</div></div>'}).join("")}
+grid("all");
+$("#tabs").onclick=function(e){var f=e.target.dataset.f;if(!f)return;$$("#tabs .ib").forEach(function(b){b.classList.toggle("on",b===e.target)});grid(f)};
+$("#gl").onclick=function(e){var g=e.target.closest(".gr");if(!g||e.target.closest("a"))return;var o=g.classList.contains("open");$$(".gr").forEach(function(x){x.classList.remove("open")});if(!o)g.classList.add("open")};
+// start lights
+var L=$$("#lights i"),busy=0;function go(){if(busy)return;busy=1;L.forEach(function(l){l.classList.remove("on","g")});$("#lt").textContent="FORMATION LAP…";
+L.forEach(function(l,i){setTimeout(function(){l.classList.add("on");$("#lt").textContent="LIGHTS "+(i+1)+" / 5"},500+i*600)});
+setTimeout(function(){L.forEach(function(l){l.classList.remove("on");l.classList.add("g")});$("#lt").textContent="LIGHTS OUT AND AWAY WE GO!";rev();setTimeout(function(){L.forEach(function(l){l.classList.remove("g")});busy=0},2200)},4000)}
+$("#lights").onclick=go;
+function rev(){$("#arc").style.strokeDashoffset="8";$("#needle").style.transform="rotate(78deg)";setTimeout(function(){$("#arc").style.strokeDashoffset="22";$("#needle").style.transform="rotate(50deg)"},1700)}
+$("#tw").onmouseenter=rev;
+var mq=["Flutter","Dart","Next.js","React","TypeScript","PHP","Supabase","PostgreSQL","MySQL","SQLite","Vercel","Git/GitHub"].map(function(x){return"<span>"+x+"</span>"}).join("");$("#mqi").innerHTML=mq+mq;
+// timers
+var t0=Date.now();setInterval(function(){var s=Math.floor((Date.now()-t0)/1000);$("#sess").textContent="SESSION "+("0"+Math.floor(s/60)).slice(-2)+":"+("0"+s%60).slice(-2);$("#clock").textContent=new Date().toLocaleTimeString("en-PH",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Manila"})+" PHT"},1000);
+// waveform
+$("#wave").innerHTML=Array.apply(null,Array(32)).map(function(_,i){return'<i style="height:'+(8+Math.abs(Math.sin(i))*22)+'px;animation-delay:'+(i*.07)+'s"></i>'}).join("");
+// pages (hash routing)
+var V=["home","grid","laps","tyres","cv","radio"],NM={home:"Home",grid:"Projects",laps:"Race Report",tyres:"Telemetry",cv:"CV",radio:"Team Radio"};
+V.forEach(function(id,i){var n=V[i+1];if(!n)return;var d=document.createElement("div");d.className="nx";d.innerHTML='<a class="btn p f" href="#'+n+'">Next: '+NM[n]+' →</a>';$("#"+id).appendChild(d)});
+function prog(){var m=document.documentElement.scrollHeight-innerHeight;$("#prog").style.width=(m>0?scrollY/m*100:0)+"%";
+var lp=$("#lp").getBoundingClientRect(),h=Math.max(0,Math.min(lp.height,innerHeight*.6-lp.top));$("#lu").style.height=Math.max(0,h-12)+"px"}
+var introDone=true;function route(){var h=location.hash.slice(1);if(V.indexOf(h)<0)h="home";$$("section.view").forEach(function(x){x.classList.toggle("act",x.id===h)});
+$$("#nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+h)});setTimeout(function(){scrollTo(0,0);prog()},0);if(h==="home"&&introDone)go()}
+addEventListener("hashchange",route);addEventListener("scroll",prog);route();
+// theme
+var th="dark";try{th=localStorage.getItem("th2")||th}catch(e){}function setT(t){th=t;document.documentElement.setAttribute("data-theme",t);$("#theme").textContent=t==="dark"?"☀ Day":"☾ Night";try{localStorage.setItem("th2",t)}catch(e){}}setT(th);$("#theme").onclick=function(){setT(th==="dark"?"light":"dark")};
+// modals
+document.addEventListener("click",function(e){var t=e.target,f=t.getAttribute&&t.getAttribute("data-cv");if(f){$("#vf").src=f;$("#vd").href=f;$("#vo").href=f;$("#vov").classList.add("show");return}
+if(t.hasAttribute&&t.hasAttribute("data-close")||t.classList.contains("ov"))$$(".ov").forEach(function(o){o.classList.remove("show")})});
+addEventListener("keydown",function(e){if(e.key==="Escape")$$(".ov").forEach(function(o){o.classList.remove("show")})});
+$("#openc").onclick=function(){$("#cov").classList.add("show")};
+$("#send").onclick=function(){location.href="mailto:ibayacj@gmail.com?subject="+encodeURIComponent("Portfolio message from "+$("#cn").value)+"&body="+encodeURIComponent($("#cm").value+"\n\n"+$("#ce").value)};
+</script>
+</body>
+</html>
