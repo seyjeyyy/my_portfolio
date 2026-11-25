@@ -25,6 +25,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
 h1,h2,h3{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;line-height:1.02;text-wrap:balance;margin:0}
 p{margin:0 0 1em;max-width:60ch}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
 .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:60;background:var(--yel);color:#1a1a1a;padding:10px 14px;border-radius:8px}
 
 /* chrome */
@@ -396,6 +397,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script>
 {
   const root=document.documentElement;
@@ -415,6 +417,17 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     if(!window.gsap||!window.ScrollTrigger||reduce){watchSections('.panel,#toolkit,#last-stop');return}
     gsap.registerPlugin(ScrollTrigger);
 
+    // smooth, gliding scroll
+    let lenis=null;
+    if(window.Lenis){
+      lenis=new Lenis({lerp:.075,wheelMultiplier:.9,smoothWheel:true});
+      lenis.on('scroll',ScrollTrigger.update);
+      gsap.ticker.add(t=>lenis.raf(t*1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    const glideTo=y=>lenis?lenis.scrollTo(y,{duration:1.4,easing:t=>1-Math.pow(1-t,4)}):window.scrollTo({top:y,behavior:'smooth'});
+    const snapOpts=points=>({snapTo:v=>{const pts=points();return pts.reduce((a,b)=>Math.abs(b-v)<Math.abs(a-v)?b:a)},duration:{min:.35,max:1},delay:.12,ease:'power3.inOut'});
+
     // split statement into words (our own fixed text)
     const st=document.querySelector('.manifesto p');
     st.querySelectorAll('em').forEach(e=>e.dataset.hl='1');
@@ -432,7 +445,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     gsap.to('.bar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:true}});
 
     // hero: jeepney departs
-    gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'+=80%',scrub:.5,pin:true}})
+    gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'+=80%',scrub:.8,pin:true,snap:snapOpts(()=>[0,1])}})
       .to('.hero .jeep',{x:()=>innerWidth,ease:'power1.in'},0)
       .to('.hero .far',{x:-60,ease:'none'},0)
       .to('.hero .near',{x:-160,ease:'none'},0)
@@ -453,7 +466,8 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       document.querySelector('.lane').style.display='';
       const dist=()=>track.scrollWidth-innerWidth;
       gsap.set('.ride',{backgroundColor:'#ffc93c',color:'#1a1a1a'});
-      ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist(),scrub:.6,pin:true,invalidateOnRefresh:true}});
+      ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist(),scrub:1,pin:true,invalidateOnRefresh:true,
+        snap:snapOpts(()=>panels.map(p=>Math.min(1,p.offsetLeft/dist())))}});
       panels.forEach(p=>{
         ScrollTrigger.create({trigger:p,containerAnimation:ride,start:'left 55%',end:'right 55%',
           onToggle:s=>{if(s.isActive){gsap.to('.ride',{backgroundColor:p.dataset.bg,color:p.dataset.ink,duration:.5,overwrite:true});mark(p.id)}}});
@@ -479,7 +493,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     gsap.fromTo('.arrive .jeep',{x:()=>-innerWidth*.7},{x:0,ease:'power2.out',scrollTrigger:{trigger:'.end',start:'top 90%',end:'top 15%',scrub:.5,invalidateOnRefresh:true}});
 
     // chips jump into the horizontal ride
-    chips.forEach(a=>a.addEventListener('click',e=>{
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
       const el=document.getElementById(a.hash.slice(1));
       if(!el)return;
       e.preventDefault();
@@ -488,9 +502,9 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         const s=ride.scrollTrigger,d=track.scrollWidth-innerWidth;
         y=s.start+Math.min(1,el.offsetLeft/d)*(s.end-s.start)+2;
       }else{
-        y=el.getBoundingClientRect().top+scrollY;
+        y=el.id==='top'?0:el.getBoundingClientRect().top+scrollY;
       }
-      window.scrollTo({top:y,behavior:'smooth'});
+      glideTo(y);
       mark(el.id);
     }));
 
