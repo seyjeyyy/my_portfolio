@@ -25,7 +25,9 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
 h1,h2,h3{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;line-height:1.02;text-wrap:balance;margin:0}
 p{margin:0 0 1em;max-width:60ch}
-html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+html{overflow-anchor:none}
+html.lenis,html.lenis body{height:auto}
+html.lenis{touch-action:pan-x pinch-zoom}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
 .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:60;background:#fff;color:#1a1a1a;padding:10px 14px;border-radius:8px}
 
 /* chrome */
@@ -468,6 +470,12 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!window.gsap||!window.ScrollTrigger||reduce){watchSections('.panel,#toolkit,#last-stop');return}
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ignoreMobileResize:true,autoRefreshEvents:'visibilitychange,DOMContentLoaded,load'});
+    let VH=innerHeight,VW=innerWidth;
+    addEventListener('resize',()=>{
+      // only a real layout change (width / rotation) re-measures; toolbar show/hide doesn't
+      if(Math.abs(innerWidth-VW)>40||Math.abs(innerHeight-VH)>220){VW=innerWidth;VH=innerHeight;ScrollTrigger.refresh()}
+    });
 
     // smooth, gliding scroll
     let lenis=null,stepper=null;
@@ -499,8 +507,8 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     gsap.to('.bar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:true}});
 
     // hero: car departs
-    gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'+=80%',scrub:true,pin:true}})
-      .to('.hero .jeep',{x:()=>innerWidth,ease:'power1.in'},0)
+    gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:()=>'+='+Math.round(VH*.8),scrub:true,pin:true,invalidateOnRefresh:true}})
+      .to('.hero .jeep',{x:()=>VW,ease:'power1.in'},0)
       .to('.hero .far',{x:-60,ease:'none'},0)
       .to('.hero .near',{x:-160,ease:'none'},0)
       .to('.hero .copy',{y:-80,opacity:.15,ease:'none'},0)
@@ -518,9 +526,9 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     mm.add('(min-width:1px)',()=>{
       root.classList.add('h');
       document.querySelector('.lane').style.display='';
-      const dist=()=>track.scrollWidth-innerWidth;
+      const dist=()=>track.scrollWidth-VW;
       gsap.set('.ride',{backgroundColor:'#c8cccf',color:'#1a1a1a'});
-      ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist()*(innerWidth<861?1.6:1),scrub:true,pin:true,invalidateOnRefresh:true}});
+      ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist()*(VW<861?1.6:1),scrub:true,pin:true,invalidateOnRefresh:true}});
       panels.forEach(p=>{
         ScrollTrigger.create({trigger:p,containerAnimation:ride,start:'left 55%',end:'right 55%',
           onToggle:s=>{if(s.isActive){gsap.to('.ride',{backgroundColor:p.dataset.bg,color:p.dataset.ink,duration:.5,overwrite:true});mark(p.id)}}});
@@ -542,8 +550,8 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       const heroST=ScrollTrigger.getAll().find(t=>t.pin===document.querySelector('.hero'));
       if(heroST)out.push(heroST.end);
       const man=document.querySelector('.manifesto');
-      out.push(docTop(man),docTop(man)+man.offsetHeight-innerHeight);
-      if(ride){const st=ride.scrollTrigger,d=track.scrollWidth-innerWidth;panels.forEach(p=>out.push(st.start+Math.min(1,p.offsetLeft/d)*(st.end-st.start)))}
+      out.push(docTop(man),docTop(man)+man.offsetHeight-man.querySelector('.stick').offsetHeight);
+      if(ride){const st=ride.scrollTrigger,d=track.scrollWidth-VW;panels.forEach(p=>out.push(st.start+Math.min(1,p.offsetLeft/d)*(st.end-st.start)))}
       else panels.forEach(p=>out.push(docTop(p)));
       const kit=document.getElementById('toolkit'),h2=kit.querySelector('h2');
       out.push(docTop(kit));
@@ -564,7 +572,9 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     const step=dir=>{
       if(!lenis||!PTS.length||root.classList.contains('morphing'))return;
       if(gliding){queued=dir;return}
-      const from=lenis.scroll,target=nextPoint(from,dir);
+      const real=Math.round(window.scrollY);
+      if(Math.abs(lenis.animatedScroll-real)>2)lenis.scrollTo(real,{immediate:true,force:true});
+      const from=real,target=nextPoint(from,dir);
       if(Math.abs(target-from)<2)return;
       gliding=true;queued=0;lockY=null;
       const dur=Math.min(.85,.5+Math.abs(target-from)/6000);
@@ -604,7 +614,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       if(Math.abs(k)===9){glideTo(k>0?PTS[PTS.length-1]:0);return}
       step(e.shiftKey&&e.key===' '?-1:k);
     });
-    ScrollTrigger.addEventListener('refresh',computePoints);
+    ScrollTrigger.addEventListener('refresh',()=>{computePoints();if(lenis)lenis.resize()});
     computePoints();
 
     // terminal: car arrives
@@ -680,7 +690,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       e.preventDefault();
       let y;
       if(ride&&el.classList.contains('panel')){
-        const s=ride.scrollTrigger,d=track.scrollWidth-innerWidth;
+        const s=ride.scrollTrigger,d=track.scrollWidth-VW;
         y=s.start+Math.min(1,el.offsetLeft/d)*(s.end-s.start)+2;
       }else{
         y=el.id==='top'?0:el.getBoundingClientRect().top+scrollY;
