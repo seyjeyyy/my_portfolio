@@ -33,7 +33,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px max(4vw,12px);pointer-events:none}
 .nav>*{pointer-events:auto}
 .brand{font-family:Anton,Impact,sans-serif;font-size:20px;text-decoration:none;background:var(--red);color:#fff;padding:6px 12px;border-radius:8px}
-.chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;background:rgb(20 20 20/.82);backdrop-filter:blur(10px);border-radius:99px;padding:4px}
+.chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;mask-image:linear-gradient(90deg,#000 88%,transparent);background:rgb(20 20 20/.82);backdrop-filter:blur(10px);border-radius:99px;padding:4px}
 .chips a{flex:none;text-decoration:none;color:#eee;font-size:14px;font-weight:600;padding:0 14px;border-radius:99px;min-height:40px;display:flex;align-items:center}
 .chips a.on{background:#fff;color:#1a1a1a}
 
@@ -133,7 +133,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @media(max-width:600px){.mech{width:min(84vw,420px);left:calc(50% - min(42vw,210px))}}
 
 /* toolkit stacking cards */
-.kit{padding:clamp(72px,10vw,140px) max(6vw,16px) 40px;max-width:1100px;margin:0 auto}
+.kit{padding:clamp(72px,10vw,140px) max(6vw,16px,calc((100% - 1100px)/2)) 40px;background:#141414;color:#fff}
 .kit>h2{font-size:clamp(40px,6vw,80px);margin-bottom:28px}
 .card{position:sticky;top:calc(90px + var(--i)*22px);min-height:46svh;margin-bottom:28px;border-radius:24px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:end;background:var(--cb);color:var(--ci);box-shadow:0 -14px 40px -24px rgb(0 0 0/.45)}
 .card b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(48px,8vw,110px);line-height:.9}
@@ -153,7 +153,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .lines strong{font-size:18px;overflow-wrap:anywhere}
 .arrive{position:relative;z-index:2;height:clamp(140px,22vw,240px)}
 .arrive .jeep{position:absolute;bottom:calc(var(--roadH)*-.55);left:50%;width:clamp(220px,28vw,380px);translate:-50% 0}
-.arrive .term{position:absolute;right:8vw;bottom:0;width:90px}
+.arrive .term{position:absolute;right:8vw;bottom:0;width:clamp(48px,5vw,80px)}
 footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px max(6vw,16px)}
 
 @media(max-width:860px){
@@ -162,6 +162,20 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
   .hint{display:none}
   .panel{grid-template-columns:minmax(0,1fr);align-content:center}
   .card{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:860px){
+  .h .panel{grid-template-columns:minmax(0,1fr);align-content:start;gap:16px;padding:78px 6vw calc(var(--roadH) + 96px)}
+  .h .panel.intro{width:100vw;align-content:center}
+  .h .panel h2{font-size:clamp(36px,10vw,52px);margin-bottom:10px}
+  .h .panel p{font-size:15px;margin-bottom:10px}
+  .h .tags{margin-bottom:10px}
+  .h .note{display:none}
+  .h .phone{height:min(30svh,250px)}
+  .h .browser{width:min(100%,360px)}
+  .h .minis{gap:8px}.h .mini{padding:12px 14px}.h .mini b{font-size:20px}.h .mini span{font-size:13px}
+  .h .ride-jeep{width:min(46vw,210px);left:6vw}
+  .h .post{left:1.5vw;width:28px}
+  .arrive{height:210px}.arrive .term{width:48px;right:6vw}
 }
 @media(max-width:600px){.brand{display:none}.nav{padding:8px}.chips{width:100%}.phone{height:min(62svh,460px)}}
 @media(prefers-reduced-motion:reduce){
@@ -380,7 +394,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     <div class="card" style="--i:0;--cb:#c8cccf;--ci:#1a1a1a"><div><small>Mobile</small><b>Flutter</b></div><p>Mobile apps that work offline, with progress kept on the device.</p></div>
     <div class="card" style="--i:1;--cb:#0a524c;--ci:#fff"><div><small>Web</small><b>Next.js + React</b></div><p>Fast frontends and web portals, deployed on Vercel.</p></div>
     <div class="card" style="--i:2;--cb:#1E3A5F;--ci:#fff"><div><small>Back end</small><b>Python + Supabase</b></div><p>APIs and Postgres databases with row-level security and helper functions.</p></div>
-    <div class="card" style="--i:3;--cb:#1c1c1c;--ci:#fff"><div><small>Product</small><b>Local first</b></div><p>Proposals built around real community needs and the UN Sustainable Development Goals.</p></div>
+    <div class="card" style="--i:3;--cb:#d7263d;--ci:#fff"><div><small>Product</small><b>Local first</b></div><p>Proposals built around real community needs and the UN Sustainable Development Goals.</p></div>
   </section>
 
   <section class="end" id="last-stop" aria-labelledby="ls">
@@ -441,6 +455,8 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
   const chips=[...document.querySelectorAll('.chips a')];
   const mark=id=>{
     chips.forEach(c=>c.classList.toggle('on',c.hash==='#'+id));
+    const on=chips.find(c=>c.hash==='#'+id),bar=on&&on.parentElement;
+    if(on&&bar.scrollWidth>bar.clientWidth)bar.scrollTo({left:on.offsetLeft-bar.clientWidth/2+on.offsetWidth/2,behavior:'smooth'});
     try{history.replaceState(null,'','#'+id)}catch(e){}
   };
   const watchSections=sel=>{
@@ -456,7 +472,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     // smooth, gliding scroll
     let lenis=null;
     if(window.Lenis){
-      lenis=new Lenis({lerp:.075,wheelMultiplier:.9,smoothWheel:true});
+      lenis=new Lenis({lerp:.075,wheelMultiplier:.9,smoothWheel:true,syncTouch:true,touchInertiaMultiplier:12});
       lenis.on('scroll',ScrollTrigger.update);
       gsap.ticker.add(t=>lenis.raf(t*1000));
       gsap.ticker.lagSmoothing(0);
@@ -499,12 +515,12 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     let ride=null;
     const mm=gsap.matchMedia();
 
-    mm.add('(min-width:861px)',()=>{
+    mm.add('(min-width:1px)',()=>{
       root.classList.add('h');
       document.querySelector('.lane').style.display='';
       const dist=()=>track.scrollWidth-innerWidth;
       gsap.set('.ride',{backgroundColor:'#c8cccf',color:'#1a1a1a'});
-      ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist(),scrub:1,pin:true,invalidateOnRefresh:true}});
+      ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist()*(innerWidth<861?1.6:1),scrub:1,pin:true,invalidateOnRefresh:true}});
       panels.forEach(p=>{
         ScrollTrigger.create({trigger:p,containerAnimation:ride,start:'left 55%',end:'right 55%',
           onToggle:s=>{if(s.isActive){gsap.to('.ride',{backgroundColor:p.dataset.bg,color:p.dataset.ink,duration:.5,overwrite:true});mark(p.id)}}});
@@ -514,14 +530,6 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         if(rv.length)gsap.from(rv,{x:90,opacity:0,stagger:.08,ease:'power2.out',scrollTrigger:{trigger:p,containerAnimation:ride,start:'left 85%',end:'left 25%',scrub:true}});
       });
       return ()=>{root.classList.remove('h');document.querySelector('.lane').style.display='none';ride=null;gsap.set('.ride',{clearProps:'all'})};
-    });
-
-    mm.add('(max-width:860px)',()=>{
-      panels.forEach(p=>{
-        ScrollTrigger.create({trigger:p,start:'top 50%',end:'bottom 50%',onToggle:s=>{if(s.isActive)mark(p.id)}});
-        const dev=p.querySelector('.device');
-        if(dev)gsap.from(dev,{y:60,opacity:0,ease:'power2.out',scrollTrigger:{trigger:dev,start:'top 95%',end:'top 60%',scrub:true}});
-      });
     });
 
     ['#toolkit','#last-stop'].forEach(id=>ScrollTrigger.create({trigger:id,start:'top 50%',end:'bottom 50%',onToggle:s=>{if(s.isActive)mark(id.slice(1))}}));
@@ -538,6 +546,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       if(ride){const st=ride.scrollTrigger,d=track.scrollWidth-innerWidth;panels.forEach(p=>out.push(st.start+Math.min(1,p.offsetLeft/d)*(st.end-st.start)))}
       else panels.forEach(p=>out.push(docTop(p)));
       const kit=document.getElementById('toolkit'),h2=kit.querySelector('h2');
+      out.push(docTop(kit));
       let nat=docTop(h2)+h2.offsetHeight+28;
       kit.querySelectorAll('.card').forEach((c,i)=>{out.push(nat-(90+i*22));nat+=c.offsetHeight+28});
       out.push(docTop(document.getElementById('last-stop')),max);
