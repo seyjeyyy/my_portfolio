@@ -622,7 +622,8 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     stepper=d=>{
       const e=d.event;
       if(e.target&&e.target.closest&&e.target.closest('.chips'))return false;
-      if(e.cancelable)e.preventDefault();
+      // only block real scroll input; leave touchstart/touchend alone so taps still become clicks
+      if(e.cancelable&&(e.type==='wheel'||e.type==='touchmove'))e.preventDefault();
       if(root.classList.contains('morphing'))return false;
       const now=performance.now();
       if(e.type==='wheel'){
