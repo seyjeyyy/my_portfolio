@@ -121,6 +121,17 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .h .phone{height:min(52svh,440px)}
 .h .browser{width:min(100%,520px)}
 
+/* transform sequence overlay */
+.morph{position:fixed;inset:0;z-index:45;visibility:hidden;opacity:0;cursor:pointer}
+.morph .veil{position:absolute;inset:0;background:radial-gradient(90% 80% at 50% 60%,rgb(14 14 18/.35),rgb(14 14 18/.75));backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.mech{position:absolute;left:calc(50% - min(23vw,260px));bottom:2svh;width:min(46vw,520px);height:auto;overflow:visible}
+.speed{position:absolute;inset:0;opacity:0;overflow:hidden;pointer-events:none}
+.speed i{position:absolute;left:100%;height:2px;width:22vw;background:linear-gradient(90deg,transparent,rgb(255 255 255/.8));animation:zip .45s linear infinite}
+@keyframes zip{to{transform:translateX(-140vw)}}
+.morph-hint{position:absolute;left:0;right:0;bottom:14px;text-align:center;color:#fff;font-size:13px;opacity:.75;margin:0}
+.morphing .jeep{visibility:hidden}
+@media(max-width:600px){.mech{width:min(84vw,420px);left:calc(50% - min(42vw,210px))}}
+
 /* toolkit stacking cards */
 .kit{padding:clamp(72px,10vw,140px) max(6vw,16px) 40px;max-width:1100px;margin:0 auto}
 .kit>h2{font-size:clamp(40px,6vw,80px);margin-bottom:28px}
@@ -394,10 +405,34 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     </div>
   </section>
 </main>
+<div class="morph" aria-hidden="true">
+  <div class="veil"></div>
+  <div class="speed"><i style="top:18%"></i><i style="top:31%;animation-delay:-.2s"></i><i style="top:44%;animation-delay:-.1s"></i><i style="top:57%;animation-delay:-.3s"></i><i style="top:70%;animation-delay:-.15s"></i></div>
+  <svg class="mech" viewBox="0 0 500 500">
+    <g transform="translate(0,164)">
+      <ellipse id="mDust" cx="262" cy="296" rx="200" ry="22" fill="#d9d9d9" opacity="0"/>
+      <g id="mFlame" opacity="0"><path d="M246 84l-70 8 70 8z" fill="#ff9a3c"/><path d="M246 108l-70 8 70 8z" fill="#ff9a3c"/><path d="M246 88l-36 4 36 4zM246 112l-36 4 36 4z" fill="#fff3b0"/></g>
+      <path id="mBody" d="M30 236V206q2-14 22-18l98-6q28-2 46-16l36-20q14-7 34-7h52q20 1 34 11l46 28q14 8 38 10l38 8q20 4 20 18v24q-2 12-18 12H46q-16 0-16-14z" fill="url(#paint)"/>
+      <path id="mGlass" d="M206 170l32-20q12-6 28-6h50q18 2 30 11l38 25H214z" fill="url(#glass)"/>
+      <g id="mCar">
+        <path d="M44 176h74v6H44z" fill="#8e0c1b"/><path d="M58 182v10M104 182v10" stroke="#5c0712" stroke-width="6"/>
+        <path d="M300 145v35" stroke="#8e0c1b" stroke-width="6"/>
+        <path d="M52 198q200-14 418 4" stroke="#fff" stroke-width="3" fill="none" opacity=".35"/>
+        <path d="M460 206h26v8q-12 3-26-2z" fill="#fff4cf"/><path d="M30 200h16v12H30z" fill="#ffb3b8"/>
+      </g>
+      <g id="mEyes" opacity="0"><rect x="242" y="-124" width="36" height="10" rx="3" fill="#8ff6ff"/><rect x="236" y="-128" width="48" height="18" rx="6" fill="#8ff6ff" opacity=".3"/></g>
+      <g id="mSparks"></g>
+      <g id="mW1" transform="translate(128,254)"><circle r="38" fill="#141414"/><g class="wheel"><circle r="25" fill="#d5dadd"/><circle r="8" fill="#7d858a"/><path d="M0 -23v14M22 -7l-13 4M14 19l-8-11M-14 19l8-11M-22 -7l13 4" stroke="#7d858a" stroke-width="6" stroke-linecap="round"/></g></g>
+      <g id="mW2" transform="translate(398,254)"><circle r="38" fill="#141414"/><g class="wheel"><circle r="25" fill="#d5dadd"/><circle r="8" fill="#7d858a"/><path d="M0 -23v14M22 -7l-13 4M14 19l-8-11M-14 19l8-11M-22 -7l13 4" stroke="#7d858a" stroke-width="6" stroke-linecap="round"/></g></g>
+    </g>
+  </svg>
+  <p class="morph-hint">Click or press Esc to skip</p>
+</div>
 <footer><span>© 2026 Clarenz John T. Ibaya</span><a href="#top">Back to top ↑</a></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script>
 {
@@ -427,7 +462,12 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       gsap.ticker.lagSmoothing(0);
     }
     const glideTo=y=>lenis?lenis.scrollTo(y,{duration:1.4,easing:t=>1-Math.pow(1-t,4)}):window.scrollTo({top:y,behavior:'smooth'});
-    const snapOpts=points=>({snapTo:v=>{const pts=points();return pts.reduce((a,b)=>Math.abs(b-v)<Math.abs(a-v)?b:a)},duration:{min:.35,max:1},delay:.12,ease:'power3.inOut'});
+    let lockY=null;
+    ['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,()=>{if(!root.classList.contains('morphing'))lockY=null},{passive:true}));
+    const snapOpts=points=>({snapTo:(v,self)=>{
+        if(lockY!=null&&self)return Math.min(1,Math.max(0,(lockY-self.start)/(self.end-self.start)));
+        const pts=points();return pts.reduce((a,b)=>Math.abs(b-v)<Math.abs(a-v)?b:a)},
+      directional:false,duration:{min:.35,max:1},delay:.12,ease:'power3.inOut'});
 
     // split statement into words (our own fixed text)
     const st=document.querySelector('.manifesto p');
@@ -493,6 +533,69 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     // terminal: car arrives
     gsap.fromTo('.arrive .jeep',{x:()=>-innerWidth*.7},{x:0,ease:'power2.out',scrollTrigger:{trigger:'.end',start:'top 90%',end:'top 15%',scrub:.5,invalidateOnRefresh:true}});
 
+    // transform sequence for the top menu: car → robot → jet → flies → lands → robot → car
+    const MS=window.MorphSVGPlugin;
+    if(MS)gsap.registerPlugin(MS);
+    const SH={
+      car:'M30 236V206q2-14 22-18l98-6q28-2 46-16l36-20q14-7 34-7h52q20 1 34 11l46 28q14 8 38 10l38 8q20 4 20 18v24q-2 12-18 12H46q-16 0-16-14z',
+      bot:'M235 -140H285V-90H272V-80H355V-40H362V92H330V40H306V70H315V268H332V296H268V110H252V296H188V268H205V70H214V40H190V92H158V-40H165V-80H248V-90H235Z',
+      jet:'M430 100L190 -128L150 -112L236 72L250 100L236 128L150 312L190 328Z'};
+    const GL={car:'M206 170l32-20q12-6 28-6h50q18 2 30 11l38 25H214z',bot:'M218 -58H302V-4H218Z',jet:'M318 100q24-18 58-8q16 8 0 16q-34 10-58-8z'};
+    const morph=document.querySelector('.morph');
+    const sparks=document.getElementById('mSparks');
+    for(let i=0;i<14;i++){const r=document.createElementNS('http://www.w3.org/2000/svg','rect');r.setAttribute('x',-4);r.setAttribute('y',-4);r.setAttribute('width',8);r.setAttribute('height',8);r.setAttribute('fill',i%2?'#ffd27a':'#fff');r.setAttribute('opacity',0);r.setAttribute('transform','translate(260,120)');sparks.appendChild(r)}
+    let seq=null,jumped=true,pending=0;
+    const jump=()=>{if(jumped)return;jumped=true;lockY=pending;lenis?lenis.scrollTo(pending,{immediate:true,force:true}):window.scrollTo(0,pending)};
+    const finish=()=>{jump();root.classList.remove('morphing');gsap.set(morph,{autoAlpha:0});seq=null};
+    const skip=()=>{if(seq){seq.kill();finish()}};
+    morph.addEventListener('click',skip);
+    addEventListener('keydown',e=>{if(e.key==='Escape')skip()});
+    const transformTo=y=>{
+      if(seq){pending=y;return}
+      pending=y;jumped=false;root.classList.add('morphing');
+      const vw=innerWidth,vh=innerHeight,W1='#mW1',W2='#mW2',B='#mBody',G='#mGlass';
+      gsap.set(B,{morphSVG:SH.car});gsap.set(G,{morphSVG:GL.car});
+      gsap.set(W1,{x:128,y:254,scale:1});gsap.set(W2,{x:398,y:254,scale:1});
+      gsap.set('.mech',{x:-vw*.8,y:0,rotation:0,scaleY:1,transformOrigin:'50% 90%'});
+      gsap.set(['#mEyes','#mFlame','.speed','#mDust'],{opacity:0});gsap.set('#mCar',{opacity:1});
+      const toBot=(at,d)=>{seq.to(B,{morphSVG:SH.bot,duration:d,ease:'back.inOut(1.4)'},at).to(G,{morphSVG:GL.bot,duration:d,ease:'back.inOut(1.4)'},at)
+        .to(W1,{x:226,y:196,scale:.5,duration:d},at).to(W2,{x:294,y:196,scale:.5,duration:d},at).to('#mEyes',{opacity:1,duration:.15},'<+='+(d-.1))};
+      seq=gsap.timeline({defaults:{ease:'power2.inOut'},onComplete:finish});
+      seq.to(morph,{autoAlpha:1,duration:.25},0)
+        .to('.mech',{x:0,duration:.6,ease:'power3.out'},0)
+        .to('.mech',{x:'+=6',duration:.05,repeat:5,yoyo:true,ease:'none'},.6)
+        .addLabel('bot',.92)
+        .to('#mCar',{opacity:0,duration:.2},'bot')
+        .fromTo('#mSparks rect',{opacity:1,x:260,y:120,scale:.4},{opacity:0,scale:1.2,x:i=>260+Math.cos(i*.45)*(150+i*8),y:i=>120+Math.sin(i*.45)*(150+i*6),duration:.6,stagger:.012,ease:'power2.out'},'bot');
+      toBot('bot',.7);
+      seq.to('.mech',{scaleY:.88,duration:.16,yoyo:true,repeat:1},'bot+=.8')
+        .addLabel('jet','bot+=1.15')
+        .to('#mEyes',{opacity:0,duration:.12},'jet')
+        .to(B,{morphSVG:SH.jet,duration:.6},'jet').to(G,{morphSVG:GL.jet,duration:.6},'jet')
+        .to([W1,W2],{x:250,y:100,scale:0,duration:.45},'jet')
+        .to('.mech',{y:-vh*.3,rotation:-8,duration:.7,ease:'power2.in'},'jet')
+        .to('#mFlame',{opacity:1,duration:.2},'jet+=.45')
+        .addLabel('fly','jet+=.7')
+        .to('.speed',{opacity:1,duration:.2},'fly')
+        .to('.mech',{x:vw*.95,y:-vh*.55,rotation:-14,duration:.6,ease:'power2.in'},'fly')
+        .add(jump,'fly+=.6')
+        .set('.mech',{x:-vw*.95,y:-vh*.6,rotation:12},'fly+=.62')
+        .to('.mech',{x:0,y:-vh*.2,rotation:4,duration:.85,ease:'power2.out'},'fly+=.62')
+        .to('.speed',{opacity:0,duration:.3},'fly+=1.15')
+        .addLabel('land','fly+=1.47')
+        .to('.mech',{y:0,rotation:0,duration:.45,ease:'power2.in'},'land')
+        .to('#mFlame',{opacity:0,duration:.2},'land+=.3')
+        .fromTo('#mDust',{opacity:.7,scale:.3,transformOrigin:'50% 50%'},{opacity:0,scale:1.4,duration:.6},'land+=.42');
+      toBot('land+=.45',.55);
+      seq.addLabel('car2','land+=1.3')
+        .to('#mEyes',{opacity:0,duration:.12},'car2')
+        .to(B,{morphSVG:SH.car,duration:.6,ease:'back.inOut(1.2)'},'car2').to(G,{morphSVG:GL.car,duration:.6,ease:'back.inOut(1.2)'},'car2')
+        .to(W1,{x:128,y:254,scale:1,duration:.6},'car2').to(W2,{x:398,y:254,scale:1,duration:.6},'car2')
+        .to('#mCar',{opacity:1,duration:.2},'car2+=.45')
+        .to('.mech',{x:vw*.95,duration:.6,ease:'power3.in'},'car2+=.8')
+        .to(morph,{autoAlpha:0,duration:.3},'car2+=1.1');
+    };
+
     // chips jump into the horizontal ride
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
       const el=document.getElementById(a.hash.slice(1));
@@ -505,7 +608,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       }else{
         y=el.id==='top'?0:el.getBoundingClientRect().top+scrollY;
       }
-      glideTo(y);
+      if(MS&&a.closest('.chips'))transformTo(y);else glideTo(y);
       mark(el.id);
     }));
 
