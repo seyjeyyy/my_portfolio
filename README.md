@@ -1,7 +1,8 @@
 # Portfolio — Clarenz John T. Ibaya
 
-A single-file static site (no build step).
+A single-file static scrollytelling site (no build step): a jeepney ride where each stop is a project.
 
 - Open `index.html` in a browser to preview.
-- Deploy: push this folder to a GitHub repo and import it in Vercel (framework preset: Other), or drag the folder into Netlify.
-- Edit text, links and projects directly in `index.html`.
+- Animations use GSAP + ScrollTrigger from cdnjs; without them the page falls back to a readable static layout.
+- CVs live in `assets/` and are linked from the contact section.
+- Deployed on Vercel (framework preset: Other); pushing to the default branch redeploys.
