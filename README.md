@@ -1,6 +1,6 @@
 # Portfolio — Clarenz John T. Ibaya
 
-A single-file static scrollytelling site (no build step): a jeepney ride where each stop is a project.
+A single-file static scrollytelling site (no build step): a drive where each checkpoint is a project.
 
 - Open `index.html` in a browser to preview.
 - Animations use GSAP + ScrollTrigger from cdnjs; without them the page falls back to a readable static layout.

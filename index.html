@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clarenz John Ibaya</title>
 <meta name="description" content="Clarenz John T. Ibaya, student developer building mobile, web and full-stack apps for Filipino communities.">
-<meta name="theme-color" content="#ffc93c">
+<meta name="theme-color" content="#c8cccf">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE: warm, confident, playful-but-polished student builder
-   IDEA: a jeepney ride; scroll = drive. Each project is a stop on the route
-   PICTURE: one original jeepney that departs (hero), rides a pinned sideways street (projects), arrives (contact)
-   COLOUR and TYPE: jeepney yellow, signboard red, each stop takes its own app's colour; Anton signboard type + Work Sans
+   IDEA: a drive; scroll = drive. Each project is a checkpoint on the route
+   PICTURE: one original red 90s-style sports coupe that departs (hero), drives a pinned sideways street (projects), arrives (contact)
+   COLOUR and TYPE: studio grey, racing red, each stop takes its own app's colour; Anton type + Work Sans
    LAYOUT: pinned hero → word-fill statement → pinned horizontal ride → stacking toolkit cards → terminal contact */
 :root{color-scheme:light dark;
   --bg:light-dark(#ffffff,#131313);--ink:light-dark(#1a1a1a,#f2f2f2);--soft:light-dark(#555,#b8b8b8);
-  --yel:#ffc93c;--red:#d7263d;--teal:#0a524c;--navy:#1E3A5F;--char:#1c1c1c;--road:#2a2a2a;--roadH:15svh}
+  --studio:#c8cccf;--chrome:#f4f5f6;--hot:#ff5a68;--red:#d7263d;--teal:#0a524c;--navy:#1E3A5F;--char:#1c1c1c;--road:#2a2a2a;--roadH:15svh}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Work Sans",system-ui,sans-serif;overflow-x:clip}
@@ -26,18 +26,18 @@ a{color:inherit}
 h1,h2,h3{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;line-height:1.02;text-wrap:balance;margin:0}
 p{margin:0 0 1em;max-width:60ch}
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
-.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:60;background:var(--yel);color:#1a1a1a;padding:10px 14px;border-radius:8px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:60;background:#fff;color:#1a1a1a;padding:10px 14px;border-radius:8px}
 
 /* chrome */
 .bar{position:fixed;inset:0 0 auto;height:4px;background:var(--red);transform-origin:left;transform:scaleX(0);z-index:50}
 .nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px max(4vw,12px);pointer-events:none}
 .nav>*{pointer-events:auto}
-.brand{font-family:Anton,Impact,sans-serif;font-size:20px;text-decoration:none;background:var(--yel);color:#1a1a1a;padding:6px 12px;border-radius:8px}
+.brand{font-family:Anton,Impact,sans-serif;font-size:20px;text-decoration:none;background:var(--red);color:#fff;padding:6px 12px;border-radius:8px}
 .chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;background:rgb(20 20 20/.82);backdrop-filter:blur(10px);border-radius:99px;padding:4px}
 .chips a{flex:none;text-decoration:none;color:#eee;font-size:14px;font-weight:600;padding:0 14px;border-radius:99px;min-height:40px;display:flex;align-items:center}
-.chips a.on{background:var(--yel);color:#1a1a1a}
+.chips a.on{background:#fff;color:#1a1a1a}
 
-/* shared jeep */
+/* shared car */
 .jeep{display:block;overflow:visible}
 .wheel{transform-box:fill-box;transform-origin:center;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -45,7 +45,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @keyframes bob{to{transform:translateY(-3px)}}
 
 /* hero */
-.hero{position:relative;min-height:100svh;background:var(--yel);color:#1a1a1a;overflow:hidden;display:grid;grid-template-rows:1fr auto}
+.hero{position:relative;min-height:100svh;background:radial-gradient(120% 90% at 60% 35%,#e3e6e8 0%,#c8cccf 55%,#9fa5a9 100%);color:#1a1a1a;overflow:hidden;display:grid;grid-template-rows:1fr auto}
 .hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:24px;padding:96px max(5vw,16px) 0;max-width:1320px;margin:0 auto;width:100%}
 .sign{display:inline-block;background:var(--red);color:#fff;font-family:Anton,Impact,sans-serif;font-size:18px;padding:6px 14px;border-radius:6px;box-shadow:0 3px 0 #8d1526;margin-bottom:18px}
 .name{font-size:clamp(60px,10vw,148px);line-height:.92}
@@ -62,18 +62,18 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .scene>svg{position:absolute;inset:0;width:100%;height:100%}
 .hero .jeep{position:absolute;left:4%;bottom:-2%;width:92%;z-index:2}
 .street{height:var(--roadH);background:var(--road);position:relative}
-.street::after,.lane{content:"";position:absolute;left:0;right:0;top:calc(50% - 3px);height:6px;background:repeating-linear-gradient(90deg,var(--yel) 0 56px,transparent 56px 120px)}
+.street::after,.lane{content:"";position:absolute;left:0;right:0;top:calc(50% - 3px);height:6px;background:repeating-linear-gradient(90deg,#f4f5f6 0 56px,transparent 56px 120px)}
 .hint{position:absolute;right:max(5vw,16px);bottom:calc(var(--roadH) + 14px);font-weight:600;font-size:14px}
 
 /* statement */
 .manifesto{height:170svh;background:var(--char);color:#fff}
 .manifesto .stick{position:sticky;top:0;height:100svh;display:grid;place-items:center;padding:0 max(6vw,16px)}
 .manifesto p{font-family:Anton,Impact,sans-serif;font-size:clamp(32px,4.6vw,64px);line-height:1.08;max-width:22ch;margin:0;text-wrap:balance}
-.manifesto em{font-style:normal;color:var(--yel)}
+.manifesto em{font-style:normal;color:var(--hot)}
 .w{display:inline-block}
 
 /* ride: static (no-JS / mobile / reduced motion) = vertical panels */
-.ride{position:relative;background:var(--yel);overflow:hidden}
+.ride{position:relative;background:var(--studio);overflow:hidden}
 .track{position:relative}
 .panel{position:relative;min-height:100svh;padding:110px max(6vw,16px) 64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;background:var(--pbg);color:var(--pink)}
 .panel .txt{max-width:560px}
@@ -83,16 +83,16 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .panel p{font-size:17px;opacity:.92}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 16px;padding:0;list-style:none}
 .tags li{font-size:13px;font-weight:600;padding:5px 11px;border-radius:99px;background:color-mix(in srgb,currentColor 14%,transparent)}
-.link{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:99px;font-weight:700;text-decoration:none;background:var(--yel);color:#1a1a1a}
+.link{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:99px;font-weight:700;text-decoration:none;background:#fff;color:#1a1a1a}
 .post{display:none}
 .ride-jeep,.ride-road{display:none}
 
 /* route signboard (intro panel) */
 .board{background:#1a1a1a;color:#fff;border-radius:18px;padding:22px 24px;box-shadow:0 10px 0 #000,0 30px 50px -20px rgb(0 0 0/.5)}
-.board small{display:block;color:var(--yel);font-weight:700;margin-bottom:10px}
+.board small{display:block;color:var(--hot);font-weight:700;margin-bottom:10px}
 .board ol{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .board li{display:flex;align-items:center;gap:12px;font-family:Anton,Impact,sans-serif;font-size:clamp(22px,2.4vw,32px)}
-.board li i{width:14px;height:14px;border-radius:50%;background:var(--yel);flex:none;box-shadow:0 0 0 4px rgb(255 201 60/.25)}
+.board li i{width:14px;height:14px;border-radius:50%;background:var(--red);flex:none;box-shadow:0 0 0 4px rgb(215 38 61/.3)}
 
 /* devices */
 .device{justify-self:center;width:100%;display:grid;justify-items:center}
@@ -130,15 +130,15 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .card small{display:block;font-weight:700;margin-bottom:8px;opacity:.8}
 
 /* terminal */
-.end{--post:#1a1a1a;position:relative;background:var(--red);color:#fff;overflow:hidden;display:grid;grid-template-rows:1fr auto;min-height:100svh}
+.end{--post:#1a1a1a;position:relative;background:radial-gradient(120% 90% at 50% 30%,#e3e6e8 0%,#c8cccf 55%,#9fa5a9 100%);color:#1a1a1a;overflow:hidden;display:grid;grid-template-rows:1fr auto;min-height:100svh}
 .end-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;padding:110px max(6vw,16px) 24px;max-width:1320px;margin:0 auto;width:100%}
 .end h2{font-size:clamp(48px,8vw,110px)}
 .end p{font-size:18px}
 .lines{display:grid;gap:10px}
-.lines a{display:flex;flex-direction:column;padding:14px 18px;border-radius:14px;background:rgb(255 255 255/.14);text-decoration:none;min-height:44px}
+.lines a{display:flex;flex-direction:column;padding:14px 18px;border-radius:14px;background:rgb(255 255 255/.6);text-decoration:none;min-height:44px}
 .lines small{font-size:13px;opacity:.85}
 .cv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
-.cv a{background:#1a1a1a}
+.cv a{background:#1a1a1a;color:#fff}
 .lines strong{font-size:18px;overflow-wrap:anywhere}
 .arrive{position:relative;z-index:2;height:clamp(140px,22vw,240px)}
 .arrive .jeep{position:absolute;bottom:calc(var(--roadH)*-.55);left:50%;width:clamp(220px,28vw,380px);translate:-50% 0}
@@ -166,33 +166,34 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fafafa"/><stop offset="1" stop-color="#b6c0c4"/></linearGradient>
-    <symbol id="jeepney" viewBox="0 0 500 300">
-      <g transform="translate(-130,-60)">
-        <ellipse cx="385" cy="352" rx="235" ry="12" fill="#000" opacity=".22"/>
-        <g class="bob">
-          <rect x="150" y="96" width="370" height="20" rx="8" fill="#1a1a1a"/>
-          <rect x="190" y="70" width="230" height="34" rx="6" fill="#d7263d"/>
-          <text x="305" y="94" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="22" fill="#fff">IDEA · CODE · SHIP</text>
-          <path d="M150 116h370v190H150z" fill="url(#chrome)"/>
-          <rect x="150" y="116" width="370" height="10" fill="#d7263d"/>
-          <g fill="#1d3a3f"><rect x="172" y="140" width="62" height="64" rx="8"/><rect x="246" y="140" width="62" height="64" rx="8"/><rect x="320" y="140" width="62" height="64" rx="8"/><rect x="394" y="140" width="62" height="64" rx="8"/></g>
-          <g fill="#fff" opacity=".28"><path d="M176 144h20l-20 26z"/><path d="M250 144h20l-20 26z"/><path d="M324 144h20l-20 26z"/><path d="M398 144h20l-20 26z"/></g>
-          <rect x="150" y="220" width="370" height="12" fill="#0a6e66"/>
-          <rect x="150" y="236" width="370" height="6" fill="#ffc93c"/>
-          <path d="M170 262c40-14 80 14 120 0s80 14 120 0 70 14 100 0" stroke="#d7263d" stroke-width="6" fill="none"/>
-          <path d="M520 150h46c18 0 30 12 34 30l16 76v50h-96z" fill="url(#chrome)"/>
-          <path d="M528 160h34c10 0 18 8 20 18l8 40h-62z" fill="#1d3a3f"/>
-          <rect x="600" y="262" width="22" height="30" rx="4" fill="#ffe08a"/>
-          <rect x="140" y="296" width="490" height="16" rx="6" fill="#9aa4a8"/>
-        </g>
-        <circle cx="230" cy="318" r="36" fill="#1a1a1a"/><g class="wheel"><circle cx="230" cy="318" r="18" fill="#c9cfd2"/><rect x="226" y="302" width="8" height="32" fill="#7d8589"/></g>
-        <circle cx="520" cy="318" r="36" fill="#1a1a1a"/><g class="wheel"><circle cx="520" cy="318" r="18" fill="#c9cfd2"/><rect x="516" y="302" width="8" height="32" fill="#7d8589"/></g>
+    <symbol id="car" viewBox="0 0 500 300">
+      <defs>
+        <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff4b57"/><stop offset=".45" stop-color="#d7182c"/><stop offset="1" stop-color="#8e0c1b"/></linearGradient>
+        <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b4a52"/><stop offset="1" stop-color="#141c21"/></linearGradient>
+      </defs>
+      <ellipse cx="255" cy="290" rx="228" ry="11" fill="#000" opacity=".28"/>
+      <g class="bob">
+        <path d="M44 176h74v6H44z" fill="#8e0c1b"/><path d="M58 182v10M104 182v10" stroke="#5c0712" stroke-width="6"/>
+        <path d="M30 236V206q2-14 22-18l98-6q28-2 46-16l36-20q14-7 34-7h52q20 1 34 11l46 28q14 8 38 10l38 8q20 4 20 18v24q-2 12-18 12H46q-16 0-16-14z" fill="url(#paint)"/>
+        <path d="M206 170l32-20q12-6 28-6h50q18 2 30 11l38 25H214z" fill="url(#glass)"/>
+        <path d="M300 145v35" stroke="#8e0c1b" stroke-width="6"/>
+        <path d="M224 166l18-11" stroke="#fff" stroke-width="4" opacity=".25" stroke-linecap="round"/>
+        <path d="M52 198q200-14 418 4" stroke="#fff" stroke-width="3" fill="none" opacity=".35"/>
+        <path d="M40 242h436" stroke="#5c0712" stroke-width="9" opacity=".5"/>
+        <path d="M250 184v54" stroke="#8e0c1b" stroke-width="2"/>
+        <rect x="266" y="194" width="20" height="5" rx="2.5" fill="#5c0712"/>
+        <path d="M360 168q6-9 16-6l2 9h-18z" fill="#8e0c1b"/>
+        <path d="M460 206h26v8q-12 3-26-2z" fill="#fff4cf"/>
+        <path d="M30 200h16v12H30z" fill="#ffb3b8"/>
+        <circle cx="128" cy="250" r="44" fill="#3a0610"/><circle cx="398" cy="250" r="44" fill="#3a0610"/>
       </g>
+      <circle cx="128" cy="254" r="38" fill="#141414"/><g class="wheel"><circle cx="128" cy="254" r="25" fill="#d5dadd"/><circle cx="128" cy="254" r="8" fill="#7d858a"/><path d="M128 231v14M150 247l-13 4M142 273l-8-11M114 273l8-11M106 247l13 4" stroke="#7d858a" stroke-width="6" stroke-linecap="round"/></g>
+      <circle cx="398" cy="254" r="38" fill="#141414"/><g class="wheel"><circle cx="398" cy="254" r="25" fill="#d5dadd"/><circle cx="398" cy="254" r="8" fill="#7d858a"/><path d="M398 231v14M420 247l-13 4M412 273l-8-11M384 273l8-11M376 247l13 4" stroke="#7d858a" stroke-width="6" stroke-linecap="round"/></g>
     </symbol>
     <symbol id="stoppost" viewBox="0 0 56 200">
-      <rect x="25" y="40" width="6" height="160" fill="#bfbfbf"/>
-      <rect x="4" y="4" width="48" height="48" rx="10" style="fill:var(--post,#d7263d)"/>
-      <text x="28" y="38" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="19" fill="#fff">PARA</text>
+      <rect x="6" y="6" width="5" height="194" fill="#bfbfbf"/>
+      <rect x="11" y="8" width="42" height="30" fill="#fff"/>
+      <g style="fill:var(--post,#1a1a1a)"><rect x="11" y="8" width="14" height="10"/><rect x="39" y="8" width="14" height="10"/><rect x="25" y="18" width="14" height="10"/><rect x="11" y="28" width="14" height="10"/><rect x="39" y="28" width="14" height="10"/></g>
     </symbol>
   </defs>
 </svg>
@@ -219,13 +220,13 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         <p class="lede">Student developer building mobile, web and full-stack apps for Filipino communities.</p>
         <div class="cta"><a class="btn" href="#route">Ride the route</a><a class="btn ghost" href="#last-stop">Get in touch</a></div>
       </div>
-      <div class="scene" role="img" aria-label="Illustration of a jeepney with a red route signboard in front of a sunny city skyline">
+      <div class="scene" role="img" aria-label="Illustration of a red sports coupe in front of a grey city skyline">
         <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-          <circle cx="380" cy="110" r="72" fill="#fff3c4"/>
-          <g class="far" fill="#f5b524"><rect x="10" y="150" width="60" height="250" rx="4"/><rect x="80" y="110" width="50" height="290" rx="4"/><rect x="140" y="180" width="70" height="220" rx="4"/><rect x="300" y="140" width="56" height="260" rx="4"/><rect x="420" y="170" width="70" height="230" rx="4"/><rect x="540" y="130" width="60" height="270" rx="4"/></g>
-          <g class="near" fill="#e9a20f"><rect x="-20" y="250" width="90" height="150" rx="6"/><rect x="200" y="230" width="80" height="170" rx="6"/><rect x="380" y="260" width="110" height="140" rx="6"/><rect x="560" y="240" width="90" height="160" rx="6"/></g>
+          <circle cx="380" cy="110" r="72" fill="#eef0f1" opacity=".7"/>
+          <g class="far" fill="#b5babe"><rect x="10" y="150" width="60" height="250" rx="4"/><rect x="80" y="110" width="50" height="290" rx="4"/><rect x="140" y="180" width="70" height="220" rx="4"/><rect x="300" y="140" width="56" height="260" rx="4"/><rect x="420" y="170" width="70" height="230" rx="4"/><rect x="540" y="130" width="60" height="270" rx="4"/></g>
+          <g class="near" fill="#a1a7ab"><rect x="-20" y="250" width="90" height="150" rx="6"/><rect x="200" y="230" width="80" height="170" rx="6"/><rect x="380" y="260" width="110" height="140" rx="6"/><rect x="560" y="240" width="90" height="160" rx="6"/></g>
         </svg>
-        <svg class="jeep" viewBox="0 0 500 300" aria-hidden="true"><use href="#jeepney"/></svg>
+        <svg class="jeep" viewBox="0 0 500 300" aria-hidden="true"><use href="#car"/></svg>
       </div>
     </div>
     <p class="hint" aria-hidden="true">Scroll to ride →</p>
@@ -241,7 +242,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     <div class="track">
       <div class="lane" aria-hidden="true" style="display:none"></div>
 
-      <article class="panel intro" id="route" data-bg="#ffc93c" data-ink="#1a1a1a" style="--pbg:#ffc93c;--pink:#1a1a1a">
+      <article class="panel intro" id="route" data-bg="#c8cccf" data-ink="#1a1a1a" style="--pbg:#c8cccf;--pink:#1a1a1a">
         <div class="txt">
           <p class="stopsign"><b>ROUTE</b> All aboard</p>
           <h2>Three live apps, one direction</h2>
@@ -314,7 +315,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         </div>
       </article>
 
-      <article class="panel" id="fairplay" data-bg="#d7263d" data-ink="#ffffff" style="--pbg:#d7263d;--pink:#fff">
+      <article class="panel" id="fairplay" data-bg="#4c1d95" data-ink="#ffffff" style="--pbg:#4c1d95;--pink:#fff">
         <svg class="post" viewBox="0 0 56 200" aria-hidden="true"><use href="#stoppost"/></svg>
         <div class="txt">
           <p class="stopsign rv"><b style="background:#1a1a1a">STOP 3</b> Events</p>
@@ -355,17 +356,17 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         </div>
         <div class="device minis">
           <div class="mini rv" style="--mb:#d7263d;--mi:#fff"><b>VocalMirror</b><span>Baby cry analysis. React frontend, Python backend, and a Supabase database of 22 tables with row-level security.</span></div>
-          <div class="mini rv" style="--mb:#ffc93c;--mi:#1a1a1a"><b>FiestaGuide</b><span>Next.js concept that puts fiesta schedules, vendor locations and street closures in one place (SDG 11).</span></div>
+          <div class="mini rv" style="--mb:#e4e7e9;--mi:#1a1a1a"><b>FiestaGuide</b><span>Next.js concept that puts fiesta schedules, vendor locations and street closures in one place (SDG 11).</span></div>
           <div class="mini rv" style="--mb:#0a6e66;--mi:#fff"><b>MataLinaw</b><span>Gamified vision screening for children that routes parents to verified pediatric optometrists (SDG 3).</span></div>
         </div>
       </article>
     </div>
-    <svg class="ride-jeep jeep" viewBox="0 0 500 300" aria-hidden="true"><use href="#jeepney"/></svg>
+    <svg class="ride-jeep jeep" viewBox="0 0 500 300" aria-hidden="true"><use href="#car"/></svg>
   </section>
 
   <section class="kit" id="toolkit" aria-labelledby="tk">
     <h2 id="tk">What I drive with</h2>
-    <div class="card" style="--i:0;--cb:#ffc93c;--ci:#1a1a1a"><div><small>Mobile</small><b>Flutter</b></div><p>Mobile apps that work offline, with progress kept on the device.</p></div>
+    <div class="card" style="--i:0;--cb:#c8cccf;--ci:#1a1a1a"><div><small>Mobile</small><b>Flutter</b></div><p>Mobile apps that work offline, with progress kept on the device.</p></div>
     <div class="card" style="--i:1;--cb:#0a524c;--ci:#fff"><div><small>Web</small><b>Next.js + React</b></div><p>Fast frontends and web portals, deployed on Vercel.</p></div>
     <div class="card" style="--i:2;--cb:#1E3A5F;--ci:#fff"><div><small>Back end</small><b>Python + Supabase</b></div><p>APIs and Postgres databases with row-level security and helper functions.</p></div>
     <div class="card" style="--i:3;--cb:#1c1c1c;--ci:#fff"><div><small>Product</small><b>Local first</b></div><p>Proposals built around real community needs and the UN Sustainable Development Goals.</p></div>
@@ -387,7 +388,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
     <div>
       <div class="arrive" aria-hidden="true">
         <svg class="term" viewBox="0 0 56 200"><use href="#stoppost"/></svg>
-        <svg class="jeep" viewBox="0 0 500 300"><use href="#jeepney"/></svg>
+        <svg class="jeep" viewBox="0 0 500 300"><use href="#car"/></svg>
       </div>
       <div class="street" aria-hidden="true"></div>
     </div>
@@ -444,7 +445,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
 
     gsap.to('.bar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:true}});
 
-    // hero: jeepney departs
+    // hero: car departs
     gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'+=80%',scrub:.8,pin:true,snap:snapOpts(()=>[0,1])}})
       .to('.hero .jeep',{x:()=>innerWidth,ease:'power1.in'},0)
       .to('.hero .far',{x:-60,ease:'none'},0)
@@ -465,7 +466,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       root.classList.add('h');
       document.querySelector('.lane').style.display='';
       const dist=()=>track.scrollWidth-innerWidth;
-      gsap.set('.ride',{backgroundColor:'#ffc93c',color:'#1a1a1a'});
+      gsap.set('.ride',{backgroundColor:'#c8cccf',color:'#1a1a1a'});
       ride=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ride',start:'top top',end:()=>'+='+dist(),scrub:1,pin:true,invalidateOnRefresh:true,
         snap:snapOpts(()=>panels.map(p=>Math.min(1,p.offsetLeft/dist())))}});
       panels.forEach(p=>{
@@ -489,7 +490,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
 
     ['#toolkit','#last-stop'].forEach(id=>ScrollTrigger.create({trigger:id,start:'top 50%',end:'bottom 50%',onToggle:s=>{if(s.isActive)mark(id.slice(1))}}));
 
-    // terminal: jeepney arrives
+    // terminal: car arrives
     gsap.fromTo('.arrive .jeep',{x:()=>-innerWidth*.7},{x:0,ease:'power2.out',scrollTrigger:{trigger:'.end',start:'top 90%',end:'top 15%',scrub:.5,invalidateOnRefresh:true}});
 
     // chips jump into the horizontal ride
