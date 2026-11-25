@@ -140,6 +140,25 @@ html.lenis{touch-action:pan-x pinch-zoom}.lenis.lenis-smooth{scroll-behavior:aut
 .egg .bubble{position:absolute;bottom:calc(3svh + min(62vw,440px)*.62);left:50%;translate:-50% 0;background:#fff;color:#1a1a1a;font-family:Anton,Impact,sans-serif;font-size:clamp(22px,4vw,34px);padding:8px 18px;border-radius:18px;box-shadow:0 8px 24px rgb(0 0 0/.25);opacity:0;white-space:nowrap}
 .egg .bubble::after{content:"";position:absolute;left:50%;bottom:-10px;border:10px solid transparent;border-top-color:#fff;border-bottom:0;translate:-50% 0}
 .egg .cf{position:absolute;top:-20px;width:9px;height:14px;border-radius:2px}
+/* egg effects */
+.fx{position:fixed;inset:0;z-index:47;pointer-events:none;overflow:hidden}
+.fx .cf{position:absolute;top:-20px;width:9px;height:14px;border-radius:2px}
+.fx .drop{position:absolute;top:-40px;width:2px;height:28px;background:linear-gradient(transparent,rgb(170 200 230/.85));border-radius:2px}
+.toast{position:fixed;left:50%;top:72px;translate:-50% 0;z-index:48;background:#1a1a1a;color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;font-size:15px;box-shadow:0 12px 30px rgb(0 0 0/.3);max-width:min(92vw,460px);text-align:center;opacity:0;visibility:hidden;pointer-events:none}
+.toast small{display:block;font-weight:500;opacity:.7;font-size:12px;margin-top:2px}
+.turbo .jeep{filter:drop-shadow(-22px 0 10px rgb(255 120 40/.95)) drop-shadow(-40px 0 18px rgb(255 60 30/.6))}
+.turbo .wheel{animation-duration:.25s}
+.turbo-lines{position:fixed;inset:0;z-index:3;pointer-events:none;display:none;overflow:hidden}
+.turbo .turbo-lines{display:block}
+.turbo-lines i{position:absolute;left:100%;height:2px;width:30vw;background:linear-gradient(90deg,transparent,rgb(215 38 61/.6));animation:zip .5s linear infinite}
+.night .hero,.night .end{background:radial-gradient(120% 90% at 60% 30%,#1d2a4a 0%,#101a33 55%,#070b18 100%);color:#eef1ff}
+.night .hero .btn{background:#fff;color:#1a1a1a}.night .hero .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.night .hero .far{fill:#26345a}.night .hero .near{fill:#1b2647}
+.night .end .lines a{background:rgb(255 255 255/.1)}
+.stars{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .8s;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 28% 32%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 46% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 63% 26%,#fff 50%,transparent 51%),radial-gradient(2px 2px at 78% 8%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 88% 34%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 36% 44%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 6% 48%,#fff 50%,transparent 51%)}
+.night .stars{opacity:1}
+.devmode *{outline:1px dashed rgb(215 38 61/.45)!important;outline-offset:-1px}
+#sun,.hero .far,.hero .near,.post,.arrive .term,.hero .name,.brand{cursor:pointer}
 .psst{opacity:.35;font-size:12px}
 .psst:hover{opacity:.8}
 
@@ -273,6 +292,7 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
 
 <main id="top">
   <section class="hero" aria-labelledby="hero-title">
+    <div class="stars" aria-hidden="true"></div>
     <div class="hero-in">
       <div class="copy">
         <span class="sign">Route: Idea → App</span>
@@ -281,10 +301,10 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         <div class="cta"><a class="btn" href="#route">Ride the route</a><a class="btn ghost" href="#last-stop">Get in touch</a></div>
       </div>
       <div class="scene" role="img" aria-label="Illustration of a red sports coupe in front of a grey city skyline">
-        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-          <circle cx="380" cy="110" r="72" fill="#eef0f1" opacity=".7"/>
-          <g class="far" fill="#b5babe"><rect x="10" y="150" width="60" height="250" rx="4"/><rect x="80" y="110" width="50" height="290" rx="4"/><rect x="140" y="180" width="70" height="220" rx="4"/><rect x="300" y="140" width="56" height="260" rx="4"/><rect x="420" y="170" width="70" height="230" rx="4"/><rect x="540" y="130" width="60" height="270" rx="4"/></g>
-          <g class="near" fill="#a1a7ab"><rect x="-20" y="250" width="90" height="150" rx="6"/><rect x="200" y="230" width="80" height="170" rx="6"/><rect x="380" y="260" width="110" height="140" rx="6"/><rect x="560" y="240" width="90" height="160" rx="6"/></g>
+        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true" style="pointer-events:none">
+          <circle id="sun" cx="380" cy="110" r="72" fill="#eef0f1" opacity=".7" style="pointer-events:auto"/>
+          <g class="far" fill="#b5babe" style="pointer-events:auto"><rect x="10" y="150" width="60" height="250" rx="4"/><rect x="80" y="110" width="50" height="290" rx="4"/><rect x="140" y="180" width="70" height="220" rx="4"/><rect x="300" y="140" width="56" height="260" rx="4"/><rect x="420" y="170" width="70" height="230" rx="4"/><rect x="540" y="130" width="60" height="270" rx="4"/></g>
+          <g class="near" fill="#a1a7ab" style="pointer-events:auto"><rect x="-20" y="250" width="90" height="150" rx="6"/><rect x="200" y="230" width="80" height="170" rx="6"/><rect x="380" y="260" width="110" height="140" rx="6"/><rect x="560" y="240" width="90" height="160" rx="6"/></g>
         </svg>
         <svg class="jeep" viewBox="0 0 500 300" aria-hidden="true"><use href="#car"/></svg>
       </div>
@@ -481,7 +501,10 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
   <svg class="jp jeep-egg" viewBox="0 0 500 300" role="img" aria-label="A jeepney with a Salamat po signboard"><use href="#jeepney"/></svg>
   <p class="bubble">Beep beep! Para po!</p>
 </div>
-<footer><span>© 2026 Clarenz John T. Ibaya <span class="psst">· Psst, sabihin mo “para”.</span></span><a href="#top">Back to top ↑</a></footer>
+<div class="fx" aria-hidden="true"></div>
+<div class="turbo-lines" aria-hidden="true"><i style="top:22%"></i><i style="top:41%;animation-delay:-.2s"></i><i style="top:63%;animation-delay:-.35s"></i><i style="top:80%;animation-delay:-.1s"></i></div>
+<p class="toast" role="status" aria-live="polite"></p>
+<footer><span>© 2026 Clarenz John T. Ibaya <span class="psst">· Psst, sabihin mo “para”. 12 surprises are hidden here.</span></span><a href="#top">Back to top ↑</a></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
@@ -612,9 +635,10 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
       const real=Math.round(window.scrollY);
       if(Math.abs(lenis.animatedScroll-real)>2)lenis.scrollTo(real,{immediate:true,force:true});
       const from=real,target=nextPoint(from,dir);
-      if(Math.abs(target-from)<2)return;
+      if(Math.abs(target-from)<2){if(dir>0&&from>=PTS[PTS.length-1]-4&&++endHits>=3){endHits=0;endOfRoad&&endOfRoad()}return}
+      endHits=0;
       gliding=true;queued=0;lockY=null;
-      const dur=Math.min(.85,.5+Math.abs(target-from)/6000);
+      const dur=Math.min(.85,.5+Math.abs(target-from)/6000)*(root.classList.contains('turbo')?.55:1);
       const end=()=>{if(!gliding)return;gliding=false;lastEnd=performance.now();if(queued){const q=queued;queued=0;step(q)}};
       lenis.scrollTo(target,{duration:dur,easing:ease,lock:true,force:true,onComplete:end});
       setTimeout(end,dur*1000+250);
@@ -721,35 +745,104 @@ footer{background:#111;color:#ccc;font-size:14px;display:flex;justify-content:sp
         .to(morph,{autoAlpha:0,duration:.3},'car2+=1.1');
     };
 
-    // easter egg: type "para" or tap the red car 5 times → a jeepney stops by
-    const egg=document.querySelector('.egg');
-    let eggOn=false,typed='',taps=[];
-    const honk=()=>{try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const ac=new A();
-      [0,.28].forEach(t0=>{const o=ac.createOscillator(),g=ac.createGain();o.type='square';o.frequency.value=392;o.connect(g);g.connect(ac.destination);
-        g.gain.setValueAtTime(0,ac.currentTime+t0);g.gain.linearRampToValueAtTime(.07,ac.currentTime+t0+.02);g.gain.setValueAtTime(.07,ac.currentTime+t0+.18);g.gain.linearRampToValueAtTime(0,ac.currentTime+t0+.22);
-        o.start(ac.currentTime+t0);o.stop(ac.currentTime+t0+.25)});setTimeout(()=>ac.close(),1200)}catch(e){}};
-    const confetti=()=>{const cols=['#d7263d','#ffc93c','#0a6e66','#1E3A5F','#fff'];
-      for(let i=0;i<46;i++){const c=document.createElement('i');c.className='cf';c.style.left=Math.random()*100+'%';c.style.background=cols[i%cols.length];egg.appendChild(c);
+    // ===== easter eggs (12) =====
+    const egg=document.querySelector('.egg'),fx=document.querySelector('.fx'),toastEl=document.querySelector('.toast');
+    const EGGS={para:'Para po!',turbo:'Turbo mode',vroom:'Rev the engine',transform:'Transform on demand',night:'Night drive',ulan:'Ulan!',name:'Scrambled name',dev:'Developer mode',end:'End of the road',flag:'Checkered flag',sudo:'sudo',hire:'hire()'};
+    const TOTAL=Object.keys(EGGS).length;
+    let found=new Set();try{found=new Set(JSON.parse(localStorage.getItem('cj-eggs')||'[]'))}catch(e){}
+    let toastTl=null;
+    const toast=(msg,sub)=>{toastEl.textContent=msg;if(sub){const sm=document.createElement('small');sm.textContent=sub;toastEl.appendChild(sm)}
+      if(toastTl)toastTl.kill();toastTl=gsap.timeline().set(toastEl,{autoAlpha:1}).fromTo(toastEl,{y:-16,opacity:0},{y:0,opacity:1,duration:.3,ease:'back.out(2)'}).to(toastEl,{opacity:0,y:-10,duration:.3,delay:2.6}).set(toastEl,{autoAlpha:0})};
+    const discover=(id,msg)=>{const isNew=!found.has(id);found.add(id);try{localStorage.setItem('cj-eggs',JSON.stringify([...found]))}catch(e){}
+      toast(msg,isNew?`Easter egg ${found.size}/${TOTAL} found: ${EGGS[id]}`:`Found again: ${EGGS[id]} · ${found.size}/${TOTAL}`)};
+    const tone=(type,f0,f1,dur,vol)=>{try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const ac=new A(),o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(f0,ac.currentTime);o.frequency.exponentialRampToValueAtTime(f1,ac.currentTime+dur*.6);o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(0,ac.currentTime);g.gain.linearRampToValueAtTime(vol,ac.currentTime+.03);g.gain.linearRampToValueAtTime(0,ac.currentTime+dur);o.start();o.stop(ac.currentTime+dur+.05);setTimeout(()=>ac.close(),(dur+.5)*1000)}catch(e){}};
+    const honk=()=>{tone('square',392,392,.22,.07);setTimeout(()=>tone('square',392,392,.22,.07),280)};
+    const confetti=(n=46)=>{const cols=['#d7263d','#ffc93c','#0a6e66','#1E3A5F','#fff'];
+      for(let i=0;i<n;i++){const c=document.createElement('i');c.className='cf';c.style.left=Math.random()*100+'%';c.style.background=cols[i%cols.length];fx.appendChild(c);
         gsap.to(c,{y:innerHeight+40,x:(Math.random()-.5)*160,rotation:Math.random()*720-360,duration:1.6+Math.random()*1.2,delay:Math.random()*.4,ease:'power1.in',onComplete:()=>c.remove()})}};
+    const cars='.hero .jeep,.ride-jeep,.arrive .jeep';
+    const tapCounter=(n,ms,fn)=>{let t=[];return()=>{const now=performance.now();t=t.filter(x=>now-x<ms);t.push(now);if(t.length>=n){t=[];fn()}}};
+
+    // 1. para: type "para" or tap the car 5x → jeepney
+    let eggOn=false;
     const jeepneyTime=()=>{
       if(eggOn||root.classList.contains('morphing'))return;
-      eggOn=true;honk();
+      eggOn=true;honk();discover('para','Beep beep! Salamat po!');
       const jp=egg.querySelector('.jp'),w=jp.getBoundingClientRect().width||400,vw=innerWidth;
       gsap.timeline({onComplete:()=>{eggOn=false;gsap.set(egg,{autoAlpha:0})}})
         .set(egg,{autoAlpha:1}).set('.egg .bubble',{opacity:0,y:10})
         .fromTo(jp,{x:-w-20},{x:(vw-w)/2,duration:1.1,ease:'power3.out'})
         .to(jp,{rotation:-2,transformOrigin:'80% 100%',duration:.12,yoyo:true,repeat:1})
         .to('.egg .bubble',{opacity:1,y:0,duration:.25,ease:'back.out(2)'},'-=.1')
-        .add(confetti,'<')
-        .to('.hero .jeep,.ride-jeep,.arrive .jeep',{y:-14,duration:.15,yoyo:true,repeat:3,ease:'power1.out'},'<')
+        .add(()=>confetti(),'<')
+        .to(cars,{y:-14,duration:.15,yoyo:true,repeat:3,ease:'power1.out'},'<')
         .to({},{duration:1.4})
         .to('.egg .bubble',{opacity:0,duration:.2})
         .add(honk)
         .to(jp,{x:vw+40,duration:1,ease:'power3.in'});
     };
-    addEventListener('keydown',e=>{if(e.key.length!==1||(e.target.closest&&e.target.closest('input,textarea')))return;typed=(typed+e.key.toLowerCase()).slice(-4);if(typed==='para'){typed='';jeepneyTime()}});
-    document.querySelectorAll('.hero .jeep,.ride-jeep,.arrive .jeep').forEach(c=>{c.style.cursor='pointer';c.style.pointerEvents='auto';c.addEventListener('click',()=>{const n=performance.now();taps=taps.filter(t=>n-t<2000);taps.push(n);if(taps.length>=5){taps=[];jeepneyTime()}})});
-    console.log('%cPsst… type "para" anywhere on this page. 🚍','font:600 14px sans-serif;color:#d7263d');
+    // 2. turbo: Konami code, or tap the hero road 3x
+    const turbo=()=>{const on=root.classList.toggle('turbo');tone('sawtooth',90,on?520:120,.9,.05);discover('turbo',on?'TURBO MODE ON. Glides are faster now.':'Turbo mode off.')};
+    // 3. vroom: type "vroom", or double-tap the car
+    const vroom=()=>{tone('sawtooth',55,240,1.3,.06);gsap.fromTo(cars,{x:0},{x:3,duration:.04,repeat:25,yoyo:true,ease:'none',clearProps:'x'});discover('vroom','VROOOM!')};
+    // 4. transform on demand: type "transform", or long-press the car
+    const transformHere=()=>{if(!MS)return;discover('transform','Car, robot, jet, car. Just another school day.');setTimeout(()=>transformTo(Math.round(scrollY)),700)};
+    // 5. night: type "night", or tap the sun 3x
+    const night=()=>{const on=root.classList.toggle('night');discover('night',on?'Night drive. Drive safe!':'Good morning!')};
+    // 6. ulan: type "ulan", or tap the skyline 3x
+    const ulan=()=>{discover('ulan','Ulan! Ingat sa daan.');for(let i=0;i<90;i++){const d=document.createElement('i');d.className='drop';d.style.left=Math.random()*104-2+'%';fx.appendChild(d);
+      gsap.to(d,{y:innerHeight+60,x:-40,duration:.55+Math.random()*.35,delay:Math.random()*4.5,ease:'none',repeat:1,onComplete:()=>d.remove()})}};
+    // 7. scrambled name: tap your name
+    const nameEl=document.querySelector('.hero .name');
+    const scramble=()=>{
+      if(!nameEl.querySelector('.ch'))nameEl.querySelectorAll('span').forEach(line=>{const t=line.textContent;line.textContent='';[...t].forEach(c=>{const sp=document.createElement('span');sp.className='ch';sp.style.display='inline-block';sp.style.whiteSpace='pre';sp.textContent=c;line.appendChild(sp)})});
+      gsap.fromTo(nameEl.querySelectorAll('.ch'),{x:()=>gsap.utils.random(-260,260),y:()=>gsap.utils.random(-200,200),rotation:()=>gsap.utils.random(-180,180),opacity:0},{x:0,y:0,rotation:0,opacity:1,duration:1,stagger:.02,ease:'back.out(1.6)'});
+      discover('name','Name scrambled and rebuilt. Just like debugging.')};
+    // 8. dev mode: tap the CJ Ibaya logo 7x
+    const devmode=()=>{const on=root.classList.toggle('devmode');discover('dev',on?'Developer mode ON. Every box is showing.':'Developer mode off.')};
+    // 9. end of the road: keep scrolling past the bottom (3x)
+    let endHits=0;
+    const endOfRoad=()=>{gsap.timeline().to('.arrive .jeep',{scaleX:-1,duration:.35}).to('.arrive .jeep',{x:'-=60',duration:.5}).to('.arrive .jeep',{scaleX:1,x:0,duration:.5,delay:.4});discover('end','End of the road! Balik tayo? Press Home or tap Back to top.')};
+    // 10. checkered flag: tap any checkered flag 3x
+    const t0=performance.now();
+    const flag=()=>{const ms=performance.now()-t0,m=Math.floor(ms/60000),sec=((ms%60000)/1000).toFixed(2).padStart(5,'0');confetti(70);discover('flag',`Checkered flag! Lap time ${m}:${sec}`)};
+    // 11. sudo: type "sudo"
+    const sudo=()=>{discover('sudo','Permission granted. Now hire me →');setTimeout(()=>{const y=document.getElementById('last-stop').getBoundingClientRect().top+scrollY;glideTo(y)},1400)};
+    // 12. hire(): call it from the browser console
+    window.hire=()=>{confetti(80);discover('hire',"Let's talk: ibayacj@gmail.com");setTimeout(()=>glideTo(document.getElementById('last-stop').getBoundingClientRect().top+scrollY),900);return 'See you at the last stop.'};
+
+    // triggers: keyboard words + Konami
+    let typed='',kseq=[];
+    const KONAMI=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    const WORDS={para:jeepneyTime,vroom,transform:transformHere,night,ulan,sudo};
+    addEventListener('keydown',e=>{
+      if(e.target.closest&&e.target.closest('input,textarea'))return;
+      kseq.push(e.key.length===1?e.key.toLowerCase():e.key);kseq=kseq.slice(-10);
+      if(kseq.join()===KONAMI.join()){kseq=[];turbo();return}
+      if(e.key.length!==1)return;
+      typed=(typed+e.key.toLowerCase()).slice(-12);
+      for(const w in WORDS)if(typed.endsWith(w)){typed='';WORDS[w]();break}
+    });
+    // triggers: taps
+    const carTap=tapCounter(5,2000,jeepneyTime);
+    let lastTap=0,pressT=null,pressed=false;
+    document.querySelectorAll(cars).forEach(c=>{
+      c.style.pointerEvents='none';const u=c.querySelector('use');if(u){u.style.pointerEvents='visiblePainted';u.style.cursor='pointer'}
+      c.addEventListener('pointerdown',()=>{pressed=false;clearTimeout(pressT);pressT=setTimeout(()=>{pressed=true;transformHere()},650)});
+      ['pointerup','pointerleave','pointercancel'].forEach(ev=>c.addEventListener(ev,()=>clearTimeout(pressT)));
+      c.addEventListener('contextmenu',e=>e.preventDefault());
+      c.addEventListener('click',()=>{if(pressed){pressed=false;return}const n=performance.now();if(n-lastTap<280)vroom();lastTap=n;carTap()});
+    });
+    document.getElementById('sun').addEventListener('click',tapCounter(3,1500,night));
+    const skyTap=tapCounter(3,1500,ulan);
+    document.querySelectorAll('.hero .far,.hero .near').forEach(g=>g.addEventListener('click',skyTap));
+    document.querySelector('.hero .street').addEventListener('click',tapCounter(3,1500,turbo));
+    nameEl.addEventListener('click',scramble);
+    const brandTap=tapCounter(7,3000,devmode);
+    document.querySelector('.brand').addEventListener('click',brandTap);
+    const flagTap=tapCounter(3,1500,flag);
+    document.querySelectorAll('.post,.arrive .term').forEach(f=>{f.style.pointerEvents='auto';f.addEventListener('click',flagTap)});
+    console.log('%cPsst… 12 easter eggs are hidden on this page. Try typing "para", or call hire() right here.','font:600 14px sans-serif;color:#d7263d');
 
     // chips jump into the horizontal ride
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
